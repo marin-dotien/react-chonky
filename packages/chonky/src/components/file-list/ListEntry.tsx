@@ -50,6 +50,9 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(({ file, selected,
       <div className={classes.listFileEntryProperty}>
         {file ? fileSizeString ?? <span>—</span> : <TextPlaceholder minLength={10} maxLength={20} />}
       </div>
+      <div className={classes.listFileEntryProperty}>
+        {file ? fileSizeString  ?? <span>—</span> : <TextPlaceholder minLength={10} maxLength={20} />}
+      </div>
     </div>
   );
 });
