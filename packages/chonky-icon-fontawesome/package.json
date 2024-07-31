@@ -59,6 +59,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "size-limit": "^11.0.2",
+    "tsdef": "^0.0.14",
     "tslib": "^2.6.2",
     "typescript": "^5.3.3"
   },
