@@ -23,9 +23,9 @@
     "file-browser",
     "react-component"
   ],
-  "main": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
-  "module": "./dist/chonky.esm.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "module": "dist/chonky.esm.js",
   "exports": {
     ".": {
       "import": "./dist/index.js",
