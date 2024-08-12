@@ -45,7 +45,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         classes.listFileEntrySelection,
                     ])}
                 ></div>
-                <div className={classes.listFileEntryContent}>
+                <div>
                     <div className={classes.listFileEntryIcon}>
                         <ChonkyIcon
                             icon={dndIconName ?? entryState.icon}
@@ -59,27 +59,27 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     >
                         <FileEntryName file={file} />
                     </div>
-                    <div className={classes.listFileEntryProperty}>
-                        {file ? (
-                            (fileModDateString ?? <span>—</span>)
-                        ) : (
-                            <TextPlaceholder minLength={5} maxLength={15} />
-                        )}
-                    </div>
-                    <div className={classes.listFileEntryProperty}>
-                        {file ? (
-                            (fileSizeString ?? <span>—</span>)
-                        ) : (
-                            <TextPlaceholder minLength={10} maxLength={20} />
-                        )}
-                    </div>
-                    <div className={classes.listFileEntryProperty}>
-                        {file ? (
-                            (file.id ?? <span>—</span>)
-                        ) : (
-                            <TextPlaceholder minLength={10} maxLength={20} />
-                        )}
-                    </div>
+                </div>
+                <div className={classes.listFileEntryProperty}>
+                    {file ? (
+                        (fileModDateString ?? <span>—</span>)
+                    ) : (
+                        <TextPlaceholder minLength={5} maxLength={15} />
+                    )}
+                </div>
+                <div className={classes.listFileEntryProperty}>
+                    {file ? (
+                        (fileSizeString ?? <span>—</span>)
+                    ) : (
+                        <TextPlaceholder minLength={10} maxLength={20} />
+                    )}
+                </div>
+                <div className={classes.listFileEntryProperty}>
+                    {file ? (
+                        (file.id ?? <span>—</span>)
+                    ) : (
+                        <TextPlaceholder minLength={10} maxLength={20} />
+                    )}
                 </div>
             </div>
         );
@@ -100,11 +100,6 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         position: 'relative',
         display: 'flex',
         height: '100%',
-    },
-    listFileEntryContent: {
-        display: 'flex',
-        alignItems: 'center',
-        width: '100%',
     },
     listFileEntrySelection: {
         opacity: 0.6,
