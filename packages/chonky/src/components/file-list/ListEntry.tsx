@@ -45,6 +45,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         classes.listFileEntrySelection,
                     ])}
                 ></div>
+
                 <div className={classes.listFileName}>
                     <div className={classes.listFileEntryIcon}>
                         <ChonkyIcon
@@ -60,13 +61,15 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         <FileEntryName file={file} />
                     </div>
                 </div>
+
                 <div className={classes.listFileEntryProperty}>
                     {file ? (
-                        (fileModDateString ?? <span>—</span>)
+                        (file.id ?? <span>—</span>)
                     ) : (
-                        <TextPlaceholder minLength={5} maxLength={15} />
+                        <TextPlaceholder minLength={10} maxLength={20} />
                     )}
                 </div>
+
                 <div className={classes.listFileEntryProperty}>
                     {file ? (
                         (fileSizeString ?? <span>—</span>)
@@ -74,6 +77,15 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         <TextPlaceholder minLength={10} maxLength={20} />
                     )}
                 </div>
+
+                <div className={classes.listFileEntryProperty}>
+                    {file ? (
+                        (fileModDateString ?? <span>—</span>)
+                    ) : (
+                        <TextPlaceholder minLength={5} maxLength={15} />
+                    )}
+                </div>
+
                 <div className={classes.listFileEntryProperty}>
                     {file ? (
                         (file.id ?? <span>—</span>)
@@ -81,13 +93,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         <TextPlaceholder minLength={10} maxLength={20} />
                     )}
                 </div>
-                <div className={classes.listFileEntryProperty}>
-                    {file ? (
-                        (file.id ?? <span>—</span>)
-                    ) : (
-                        <TextPlaceholder minLength={10} maxLength={20} />
-                    )}
-                </div>
+
                 <div className={classes.listFileEntryProperty}>
                     {file ? (
                         (file.id ?? <span>—</span>)
