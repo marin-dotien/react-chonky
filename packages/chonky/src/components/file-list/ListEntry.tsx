@@ -45,7 +45,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         classes.listFileEntrySelection,
                     ])}
                 ></div>
-                <div className={classes.listFileContent}>
+                <div className={classes.listFileName}>
                     <div className={classes.listFileEntryIcon}>
                         <ChonkyIcon
                             icon={dndIconName ?? entryState.icon}
@@ -81,6 +81,20 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         <TextPlaceholder minLength={10} maxLength={20} />
                     )}
                 </div>
+                <div className={classes.listFileEntryProperty}>
+                    {file ? (
+                        (file.id ?? <span>—</span>)
+                    ) : (
+                        <TextPlaceholder minLength={10} maxLength={20} />
+                    )}
+                </div>
+                <div className={classes.listFileEntryProperty}>
+                    {file ? (
+                        (file.id ?? <span>—</span>)
+                    ) : (
+                        <TextPlaceholder minLength={10} maxLength={20} />
+                    )}
+                </div>
             </div>
         );
     }
@@ -101,8 +115,9 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         display: 'flex',
         height: '100%',
     },
-    listFileContent: {
+    listFileName: {
         display: 'flex',
+        flex: '0 1 20%',
     },
     listFileEntrySelection: {
         opacity: 0.6,
@@ -117,7 +132,6 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         fontSize: theme.listFileEntry.iconFontSize,
         boxSizing: 'border-box',
         padding: [2, 4],
-        flex: '0 0 50px',
         zIndex: 20,
     },
     listFileEntryName: {
@@ -126,7 +140,6 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         whiteSpace: 'nowrap',
         overflow: 'hidden',
         paddingLeft: 8,
-        flex: '1 1 300px',
         zIndex: 20,
     },
     listFileEntryProperty: {
@@ -134,7 +147,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         boxSizing: 'border-box',
         whiteSpace: 'nowrap',
         overflow: 'hidden',
-        flex: '0 1 150px',
+        flex: '0 1 15%',
         padding: [2, 8],
         zIndex: 20,
     },

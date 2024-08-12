@@ -50,12 +50,13 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
 
         return (
             <>
-                <div className={classes.headerRow}>
-                    <div className={classes.headerCellIcon}>Icon</div>
-                    <div className={classes.headerCellName}>Name</div>
-                    <div className={classes.headerCellProperty}>Modified Date</div>
-                    <div className={classes.headerCellProperty}>Size</div>
-                    <div className={classes.headerCellProperty}>ID</div>
+                <div className={classes.headerRow} style={{ width }}>
+                    <div className={classes.headerCellIcon}>Naziv</div>
+                    <div className={classes.headerCellName}>Folder</div>
+                    <div className={classes.headerCellProperty}>Uređivano</div>
+                    <div className={classes.headerCellProperty}>Autor</div>
+                    <div className={classes.headerCellProperty}>Rok</div>
+                    <div className={classes.headerCellProperty}>Status</div>
                 </div>
                 <FixedSizeList
                     ref={listRef as any}
