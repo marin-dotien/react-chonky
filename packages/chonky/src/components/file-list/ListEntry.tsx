@@ -45,7 +45,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         classes.listFileEntrySelection,
                     ])}
                 ></div>
-                <div>
+                <div className={classes.listFileContent}>
                     <div className={classes.listFileEntryIcon}>
                         <ChonkyIcon
                             icon={dndIconName ?? entryState.icon}
@@ -100,6 +100,9 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         position: 'relative',
         display: 'flex',
         height: '100%',
+    },
+    listFileContent: {
+        display: 'flex',
     },
     listFileEntrySelection: {
         opacity: 0.6,
