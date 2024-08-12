@@ -45,39 +45,41 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         classes.listFileEntrySelection,
                     ])}
                 ></div>
-                <div className={classes.listFileEntryIcon}>
-                    <ChonkyIcon
-                        icon={dndIconName ?? entryState.icon}
-                        spin={dndIconName ? false : entryState.iconSpin}
-                        fixedWidth={true}
-                    />
-                </div>
-                <div
-                    className={classes.listFileEntryName}
-                    title={file ? file.name : undefined}
-                >
-                    <FileEntryName file={file} />
-                </div>
-                <div className={classes.listFileEntryProperty}>
-                    {file ? (
-                        fileModDateString ?? <span>—</span>
-                    ) : (
-                        <TextPlaceholder minLength={5} maxLength={15} />
-                    )}
-                </div>
-                <div className={classes.listFileEntryProperty}>
-                    {file ? (
-                        fileSizeString ?? <span>—</span>
-                    ) : (
-                        <TextPlaceholder minLength={10} maxLength={20} />
-                    )}
-                </div>
-                <div className={classes.listFileEntryProperty}>
-                    {file ? (
-                        file.id ?? <span>—</span>
-                    ) : (
-                        <TextPlaceholder minLength={10} maxLength={20} />
-                    )}
+                <div className={classes.listFileEntryContent}>
+                    <div className={classes.listFileEntryIcon}>
+                        <ChonkyIcon
+                            icon={dndIconName ?? entryState.icon}
+                            spin={dndIconName ? false : entryState.iconSpin}
+                            fixedWidth={true}
+                        />
+                    </div>
+                    <div
+                        className={classes.listFileEntryName}
+                        title={file ? file.name : undefined}
+                    >
+                        <FileEntryName file={file} />
+                    </div>
+                    <div className={classes.listFileEntryProperty}>
+                        {file ? (
+                            (fileModDateString ?? <span>—</span>)
+                        ) : (
+                            <TextPlaceholder minLength={5} maxLength={15} />
+                        )}
+                    </div>
+                    <div className={classes.listFileEntryProperty}>
+                        {file ? (
+                            (fileSizeString ?? <span>—</span>)
+                        ) : (
+                            <TextPlaceholder minLength={10} maxLength={20} />
+                        )}
+                    </div>
+                    <div className={classes.listFileEntryProperty}>
+                        {file ? (
+                            (file.id ?? <span>—</span>)
+                        ) : (
+                            <TextPlaceholder minLength={10} maxLength={20} />
+                        )}
+                    </div>
                 </div>
             </div>
         );
@@ -99,6 +101,11 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         display: 'flex',
         height: '100%',
     },
+    listFileEntryContent: {
+        display: 'flex',
+        alignItems: 'center',
+        width: '100%',
+    },
     listFileEntrySelection: {
         opacity: 0.6,
     },
@@ -112,6 +119,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         fontSize: theme.listFileEntry.iconFontSize,
         boxSizing: 'border-box',
         padding: [2, 4],
+        flex: '0 0 50px',
         zIndex: 20,
     },
     listFileEntryName: {
@@ -119,8 +127,8 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         boxSizing: 'border-box',
         whiteSpace: 'nowrap',
         overflow: 'hidden',
-        flex: '1 1 300px',
         paddingLeft: 8,
+        flex: '1 1 300px',
         zIndex: 20,
     },
     listFileEntryProperty: {

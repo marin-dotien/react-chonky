@@ -38,7 +38,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
         // When entry size is null, we use List view
         const rowRenderer = (data: { index: number; style: CSSProperties }) => {
             return (
-                <div style={data.style}>
+                <div style={data.style} className={classes.row}>
                     <SmartFileEntry
                         fileId={displayFileIds[data.index] ?? null}
                         displayIndex={data.index}
@@ -51,11 +51,11 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
         return (
             <>
                 <div className={classes.headerRow}>
-                    <div className={classes.headerCell}>Icon</div>
-                    <div className={classes.headerCell}>Name</div>
-                    <div className={classes.headerCell}>Modified Date</div>
-                    <div className={classes.headerCell}>Size</div>
-                    <div className={classes.headerCell}>ID</div>
+                    <div className={classes.headerCellIcon}>Icon</div>
+                    <div className={classes.headerCellName}>Name</div>
+                    <div className={classes.headerCellProperty}>Modified Date</div>
+                    <div className={classes.headerCellProperty}>Size</div>
+                    <div className={classes.headerCellProperty}>ID</div>
                 </div>
                 <FixedSizeList
                     ref={listRef as any}
@@ -71,6 +71,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
             </>
         );
     }, [
+        classes.row,
         classes.listContainer,
         viewConfig.entryHeight,
         height,
@@ -89,12 +90,28 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
     headerRow: {
         display: 'flex',
         padding: '8px 16px',
-        borderBottom: `1px solid ${theme.palette.divider}`,
         backgroundColor: theme.palette.background.default,
     },
-    headerCell: {
-        flex: '0 1 150px',
+    headerCellIcon: {
+        flex: '0 0 50px', // Matches the icon size in the content
         padding: '8px',
         fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    headerCellName: {
+        flex: '1 1 300px', // Matches the name cell size in the content
+        padding: '8px',
+        fontWeight: 'bold',
+        textAlign: 'left',
+    },
+    headerCellProperty: {
+        flex: '0 1 150px', // Matches the property cells in the content
+        padding: '8px',
+        fontWeight: 'bold',
+        textAlign: 'left',
+    },
+    row: {
+        display: 'flex',
+        alignItems: 'center',
     },
 }));
