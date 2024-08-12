@@ -50,7 +50,13 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
 
         return (
             <>
-                <div>Test heading</div>
+                <div className={classes.headerRow}>
+                    <div className={classes.headerCell}>Icon</div>
+                    <div className={classes.headerCell}>Name</div>
+                    <div className={classes.headerCell}>Modified Date</div>
+                    <div className={classes.headerCell}>Size</div>
+                    <div className={classes.headerCell}>ID</div>
+                </div>
                 <FixedSizeList
                     ref={listRef as any}
                     className={classes.listContainer}
@@ -79,5 +85,16 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
 const useStyles = makeLocalChonkyStyles((theme) => ({
     listContainer: {
         borderTop: `solid 1px ${theme.palette.divider}`,
+    },
+    headerRow: {
+        display: 'flex',
+        padding: '8px 16px',
+        borderBottom: `1px solid ${theme.palette.divider}`,
+        backgroundColor: theme.palette.background.default,
+    },
+    headerCell: {
+        flex: '0 1 150px',
+        padding: '8px',
+        fontWeight: 'bold',
     },
 }));
