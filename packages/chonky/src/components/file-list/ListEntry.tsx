@@ -12,6 +12,7 @@ import {
 } from './FileEntry-hooks';
 import { FileEntryName } from './FileEntryName';
 import { FileEntryState, useCommonEntryStyles } from './GridEntryPreview';
+import { fileMap } from '../../extensions';
 
 interface StyleState {
     entryState: FileEntryState;
@@ -22,6 +23,9 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
     ({ file, selected, focused, dndState }) => {
         const entryState: FileEntryState = useFileEntryState(file, selected, focused);
         const dndIconName = useDndIcon(dndState);
+
+        const parentFolder = file?.parentId ? fileMap[file.parentId] : null;
+        const parentFolderName = parentFolder?.name ?? 'No Parent';
 
         const { fileModDateString, fileSizeString } =
             useLocalizedFileEntryStrings(file);
@@ -36,6 +40,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
         const commonClasses = useCommonEntryStyles(entryState);
         const ChonkyIcon = useContext(ChonkyIconContext);
         const fileEntryHtmlProps = useFileEntryHtmlProps(file);
+
         return (
             <div className={classes.listFileEntry} {...fileEntryHtmlProps}>
                 <div className={commonClasses.focusIndicator}></div>
@@ -62,13 +67,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     </div>
                 </div>
 
-                <div className={classes.listFileProperty}>
-                    {file ? (
-                        (file.id ?? <span>—</span>)
-                    ) : (
-                        <TextPlaceholder minLength={10} maxLength={20} />
-                    )}
-                </div>
+                <div className={classes.listFileProperty}>{parentFolderName}</div>
 
                 <div className={classes.listFileEntryProperty}>
                     {file ? (
@@ -115,7 +114,6 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         position: 'relative',
         display: 'flex',
         height: '100%',
-        gap: '20px',
         alignItems: 'center',
         boxShadow: `inset ${theme.palette.divider} 0 -1px 0`,
         fontSize: theme.listFileEntry.fontSize,

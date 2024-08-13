@@ -91,7 +91,6 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
     },
     headerRow: {
         display: 'flex',
-        gap: '20px',
         padding: '10px 0',
         fontSize: theme.listFileEntry.headerFontSize,
         backgroundColor: 'transparent',
