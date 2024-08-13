@@ -98,7 +98,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
 
                 <div
                     className={classes.listFileEntryProperty}
-                    style={{ textAlign: 'right' }}
+                    style={{ justifyContent: 'flex-end' }}
                 >
                     {!isFolder ? (
                         (file?.status ?? <span>—</span>)
