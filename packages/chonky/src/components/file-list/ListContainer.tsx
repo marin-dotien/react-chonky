@@ -57,6 +57,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
                     <div className={classes.headerCellProperty}>Autor</div>
                     <div className={classes.headerCellProperty}>Rok</div>
                     <div className={classes.headerCellProperty}>Status</div>
+                    <div className={classes.headerCellOptions}></div>
                 </div>
                 <FixedSizeList
                     ref={listRef as any}
@@ -90,7 +91,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
     },
     headerRow: {
         display: 'flex',
-        padding: '0 10px',
+        padding: '10px 0',
         backgroundColor: 'transparent',
     },
     headerCellName: {
@@ -102,6 +103,9 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         flex: '0 1 15%', // Matches the property cells in ListEntry
         textTransform: 'uppercase',
         textAlign: 'left',
+    },
+    headerCellOptions: {
+        flex: '0 1 5%',
     },
     row: {
         display: 'flex',

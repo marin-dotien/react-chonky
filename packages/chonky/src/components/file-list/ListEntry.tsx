@@ -101,6 +101,10 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         <TextPlaceholder minLength={10} maxLength={20} />
                     )}
                 </div>
+
+                <div className={classes.listFileEntryOption}>
+                    <button>...</button>
+                </div>
             </div>
         );
     }
@@ -108,6 +112,10 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
 
 const useStyles = makeLocalChonkyStyles((theme) => ({
     listFileEntry: {
+        position: 'relative',
+        display: 'flex',
+        height: '100%',
+        alignItems: 'center',
         boxShadow: `inset ${theme.palette.divider} 0 -1px 0`,
         fontSize: theme.listFileEntry.fontSize,
         color: ({ dndState }: StyleState) =>
@@ -116,19 +124,17 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
                     ? theme.dnd.canDropColor
                     : theme.dnd.cannotDropColor
                 : 'inherit',
-        alignItems: 'center',
-        position: 'relative',
-        display: 'flex',
-        height: '100%',
-    },
-    listFileName: {
-        display: 'flex',
-        flex: '0 1 20%',
     },
     listFileEntrySelection: {
         opacity: 0.6,
     },
+    listFileName: {
+        zIndex: 20,
+        display: 'flex',
+        flex: '0 1 20%',
+    },
     listFileEntryIcon: {
+        padding: [2, 4],
         color: ({ entryState, dndState }: StyleState) =>
             dndState.dndIsOver
                 ? dndState.dndCanDrop
@@ -137,24 +143,24 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
                 : entryState.color,
         fontSize: theme.listFileEntry.iconFontSize,
         boxSizing: 'border-box',
-        padding: [2, 4],
-        zIndex: 20,
     },
     listFileEntryName: {
+        overflow: 'hidden',
+        paddingLeft: 8,
         textOverflow: 'ellipsis',
         boxSizing: 'border-box',
         whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        paddingLeft: 8,
-        zIndex: 20,
     },
     listFileEntryProperty: {
+        zIndex: 20,
+        overflow: 'hidden',
+        display: 'flex',
+        flex: '0 1 15%',
         fontSize: theme.listFileEntry.propertyFontSize,
         boxSizing: 'border-box',
         whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        flex: '0 1 15%',
-        padding: [2, 8],
-        zIndex: 20,
+    },
+    listFileEntryOption: {
+        flex: '0 1 5%',
     },
 }));
