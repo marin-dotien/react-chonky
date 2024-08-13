@@ -62,7 +62,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     </div>
                 </div>
 
-                <div className={classes.listFileProperty}>
+                <div className={classes.listFileEntryProperty}>
                     {file ? (
                         (file.parentId ?? <span>—</span>)
                     ) : (
