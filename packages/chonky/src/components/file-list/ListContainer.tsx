@@ -57,7 +57,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
                     <div className={classes.headerCellProperty}>Autor</div>
                     <div className={classes.headerCellProperty}>Rok</div>
                     <div className={classes.headerCellProperty}>Status</div>
-                    <div className={classes.headerCellOptions}></div>
+                    <div className={classes.headerCellOptions}>Options</div>
                 </div>
                 <FixedSizeList
                     ref={listRef as any}
@@ -107,6 +107,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
     },
     headerCellOptions: {
         flex: '0 1 5%',
+        opacity: '0',
     },
     row: {
         display: 'flex',
