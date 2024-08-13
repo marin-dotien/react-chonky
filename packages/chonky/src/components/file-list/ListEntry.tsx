@@ -82,7 +82,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
 
                 <div className={classes.listFileEntryProperty}>
                     {file ? (
-                        (fileModDateString ?? <span>—</span>)
+                        (file?.author ?? <span>—</span>)
                     ) : (
                         <TextPlaceholder minLength={5} maxLength={15} />
                     )}
@@ -90,7 +90,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
 
                 <div className={classes.listFileEntryProperty}>
                     {!isFolder ? (
-                        (fileModDateString ?? <span>—</span>)
+                        (file?.deadline ?? <span>—</span>)
                     ) : (
                         <span className={classes.invisibleSpan}>-</span>
                     )}
@@ -101,7 +101,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     style={{ textAlign: 'right' }}
                 >
                     {!isFolder ? (
-                        (file?.size ?? <span>—</span>)
+                        (file?.status ?? <span>—</span>)
                     ) : (
                         <span className={classes.invisibleSpan}>-</span>
                     )}
