@@ -168,6 +168,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
     },
     listFileEntryOption: {
         flex: '0 1 5%',
+        textAlign: 'center',
     },
     invisibleSpan: {
         visibility: 'hidden',
