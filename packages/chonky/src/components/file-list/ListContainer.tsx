@@ -90,19 +90,17 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
     },
     headerRow: {
         display: 'flex',
-        padding: '8px 16px',
-        backgroundColor: theme.palette.background.default,
+        padding: '0 10px',
+        backgroundColor: 'transparent',
     },
     headerCellName: {
-        flex: '0 1 20%', // Matches the name cell size in the content
-        padding: '8px',
-        fontWeight: 'bold',
+        flex: '0 1 20%', // Matches the name cell size in ListEntry
+        textTransform: 'uppercase',
         textAlign: 'left',
     },
     headerCellProperty: {
-        flex: '0 1 15%', // Matches the property cells in the content
-        padding: '8px',
-        fontWeight: 'bold',
+        flex: '0 1 15%', // Matches the property cells in ListEntry
+        textTransform: 'uppercase',
         textAlign: 'left',
     },
     row: {
