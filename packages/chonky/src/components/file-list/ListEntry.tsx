@@ -36,6 +36,9 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
         const commonClasses = useCommonEntryStyles(entryState);
         const ChonkyIcon = useContext(ChonkyIconContext);
         const fileEntryHtmlProps = useFileEntryHtmlProps(file);
+
+        const isFolder = file?.isDir;
+
         return (
             <div className={classes.listFileEntry} {...fileEntryHtmlProps}>
                 <div className={commonClasses.focusIndicator}></div>
@@ -78,29 +81,25 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     )}
                 </div>
 
-                <div className={classes.listFileEntryProperty}>
-                    {file ? (
-                        (fileSizeString ?? <span>—</span>)
-                    ) : (
-                        <TextPlaceholder minLength={10} maxLength={20} />
-                    )}
-                </div>
-
-                <div className={classes.listFileEntryProperty}>
-                    {file ? (
-                        (file.id ?? <span>—</span>)
-                    ) : (
-                        <TextPlaceholder minLength={10} maxLength={20} />
-                    )}
-                </div>
-
-                <div className={classes.listFileEntryProperty}>
-                    {file ? (
-                        (file.id ?? <span>—</span>)
-                    ) : (
-                        <TextPlaceholder minLength={10} maxLength={20} />
-                    )}
-                </div>
+                {/* Conditionally render size and ID columns only for files */}
+                {!isFolder && (
+                    <>
+                        <div className={classes.listFileEntryProperty}>
+                            {file ? (
+                                (fileSizeString ?? <span>—</span>)
+                            ) : (
+                                <TextPlaceholder minLength={10} maxLength={20} />
+                            )}
+                        </div>
+                        <div className={classes.listFileEntryProperty}>
+                            {file ? (
+                                (file.id ?? <span>—</span>)
+                            ) : (
+                                <TextPlaceholder minLength={10} maxLength={20} />
+                            )}
+                        </div>
+                    </>
+                )}
 
                 <div className={classes.listFileEntryOption}>
                     <button>...</button>
