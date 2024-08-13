@@ -1,5 +1,4 @@
 import React, { useContext, useMemo } from 'react';
-
 import { DndEntryState, FileEntryProps } from '../../types/file-list.types';
 import { useLocalizedFileEntryStrings } from '../../util/i18n';
 import { ChonkyIconContext } from '../../util/icon-helper';
@@ -81,25 +80,21 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     )}
                 </div>
 
-                {/* Conditionally render size and ID columns only for files */}
-                {!isFolder && (
-                    <>
-                        <div className={classes.listFileEntryProperty}>
-                            {file ? (
-                                (fileSizeString ?? <span>—</span>)
-                            ) : (
-                                <TextPlaceholder minLength={10} maxLength={20} />
-                            )}
-                        </div>
-                        <div className={classes.listFileEntryProperty}>
-                            {file ? (
-                                (file.id ?? <span>—</span>)
-                            ) : (
-                                <TextPlaceholder minLength={10} maxLength={20} />
-                            )}
-                        </div>
-                    </>
-                )}
+                <div className={classes.listFileEntryProperty}>
+                    {!isFolder ? (
+                        (fileModDateString ?? <span>—</span>)
+                    ) : (
+                        <span className={classes.invisibleSpan}>-</span>
+                    )}
+                </div>
+
+                <div className={classes.listFileEntryProperty}>
+                    {!isFolder ? (
+                        (file?.size ?? <span>—</span>)
+                    ) : (
+                        <span className={classes.invisibleSpan}>-</span>
+                    )}
+                </div>
 
                 <div className={classes.listFileEntryOption}>
                     <button>...</button>
@@ -131,6 +126,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         zIndex: 20,
         display: 'flex',
         flex: '0 1 20%',
+        marginRight: '20px',
     },
     listFileEntryIcon: {
         color: ({ entryState, dndState }: StyleState) =>
@@ -154,6 +150,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         overflow: 'hidden',
         display: 'flex',
         flex: '0 1 15%',
+        marginRight: '20px',
         fontSize: theme.listFileEntry.propertyFontSize,
         boxSizing: 'border-box',
         whiteSpace: 'nowrap',
@@ -161,4 +158,10 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
     listFileEntryOption: {
         flex: '0 1 5%',
     },
+    invisibleSpan: {
+        visibility: 'hidden',
+        display: 'inline-block',
+        width: '100%',
+    },
+    // ..
 }));
