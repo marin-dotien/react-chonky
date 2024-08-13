@@ -81,6 +81,14 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                 </div>
 
                 <div className={classes.listFileEntryProperty}>
+                    {file ? (
+                        (fileModDateString ?? <span>—</span>)
+                    ) : (
+                        <TextPlaceholder minLength={5} maxLength={15} />
+                    )}
+                </div>
+
+                <div className={classes.listFileEntryProperty}>
                     {!isFolder ? (
                         (fileModDateString ?? <span>—</span>)
                     ) : (
@@ -88,7 +96,10 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     )}
                 </div>
 
-                <div className={classes.listFileEntryProperty}>
+                <div
+                    className={classes.listFileEntryProperty}
+                    style={{ textAlign: 'right' }}
+                >
                     {!isFolder ? (
                         (file?.size ?? <span>—</span>)
                     ) : (

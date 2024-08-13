@@ -57,9 +57,8 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
                     <div className={classes.headerCellProperty}>Autor</div>
                     <div className={classes.headerCellProperty}>Rok</div>
                     <div
-                        className={
-                            (classes.headerCellProperty, classes.headerCellStatus)
-                        }
+                        className={classes.headerCellProperty}
+                        style={{ textAlign: 'right' }}
                     >
                         Status
                     </div>
@@ -112,9 +111,6 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         marginRight: '20px',
         textTransform: 'uppercase',
         textAlign: 'left',
-    },
-    headerCellStatus: {
-        textAlign: 'right',
     },
     headerCellOptions: {
         flex: '0 1 5%',
