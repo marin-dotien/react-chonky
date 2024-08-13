@@ -52,7 +52,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
             <>
                 <div className={classes.headerRow} style={{ width }}>
                     <div className={classes.headerCellName}>Naziv</div>
-                    <div className={classes.headerCellName}>Folder</div>
+                    <div className={classes.headerCellProperty}>Folder</div>
                     <div className={classes.headerCellProperty}>Uređivano</div>
                     <div className={classes.headerCellProperty}>Autor</div>
                     <div className={classes.headerCellProperty}>Rok</div>
@@ -91,7 +91,9 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
     },
     headerRow: {
         display: 'flex',
+        gap: '20px',
         padding: '10px 0',
+        fontSize: theme.listFileEntry.headerFontSize,
         backgroundColor: 'transparent',
     },
     headerCellName: {

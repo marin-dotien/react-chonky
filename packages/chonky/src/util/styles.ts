@@ -77,6 +77,7 @@ export const lightTheme = {
         iconFontSize: '1.1em',
         iconBorderRadius: 5,
         fontSize: 14,
+        headerFontSize: 10,
     },
 };
 

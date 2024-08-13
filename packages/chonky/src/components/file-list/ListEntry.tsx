@@ -62,7 +62,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     </div>
                 </div>
 
-                <div className={classes.listFileName}>
+                <div className={classes.listFileProperty}>
                     {file ? (
                         (file.id ?? <span>—</span>)
                     ) : (
@@ -115,6 +115,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         position: 'relative',
         display: 'flex',
         height: '100%',
+        gap: '20px',
         alignItems: 'center',
         boxShadow: `inset ${theme.palette.divider} 0 -1px 0`,
         fontSize: theme.listFileEntry.fontSize,
@@ -134,7 +135,6 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         flex: '0 1 20%',
     },
     listFileEntryIcon: {
-        padding: [2, 4],
         color: ({ entryState, dndState }: StyleState) =>
             dndState.dndIsOver
                 ? dndState.dndCanDrop
