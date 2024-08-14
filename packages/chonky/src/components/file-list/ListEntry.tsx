@@ -22,8 +22,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
         const entryState: FileEntryState = useFileEntryState(file, selected, focused);
         const dndIconName = useDndIcon(dndState);
 
-        const { fileModDateString, fileSizeString } =
-            useLocalizedFileEntryStrings(file);
+        const { fileModDateString } = useLocalizedFileEntryStrings(file);
         const styleState = useMemo<StyleState>(
             () => ({
                 entryState,
