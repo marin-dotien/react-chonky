@@ -65,7 +65,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
 
                 <div className={classes.listFileEntryProperty}>
                     {file ? (
-                        (file.parentId ?? <span>—</span>)
+                        file.parentId ?? <span>—</span>
                     ) : (
                         <TextPlaceholder minLength={10} maxLength={20} />
                     )}
@@ -73,7 +73,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
 
                 <div className={classes.listFileEntryProperty}>
                     {file ? (
-                        (fileModDateString ?? <span>—</span>)
+                        fileModDateString ?? <span>—</span>
                     ) : (
                         <TextPlaceholder minLength={5} maxLength={15} />
                     )}
@@ -81,7 +81,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
 
                 <div className={classes.listFileEntryProperty}>
                     {file ? (
-                        (file?.author ?? <span>—</span>)
+                        file?.author ?? <span>—</span>
                     ) : (
                         <TextPlaceholder minLength={5} maxLength={15} />
                     )}
@@ -89,7 +89,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
 
                 <div className={classes.listFileEntryProperty}>
                     {!isFolder ? (
-                        (file?.deadline ?? <span>—</span>)
+                        file?.deadline ?? <span>—</span>
                     ) : (
                         <span className={classes.invisibleSpan}>-</span>
                     )}
@@ -100,7 +100,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     style={{ justifyContent: 'flex-end' }}
                 >
                     {!isFolder ? (
-                        (file?.status ?? <span>—</span>)
+                        file?.status ?? <span>—</span>
                     ) : (
                         <span className={classes.invisibleSpan}>-</span>
                     )}
@@ -120,6 +120,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         display: 'flex',
         height: '100%',
         alignItems: 'center',
+        padding: 4,
         boxShadow: `inset ${theme.palette.divider} 0 -1px 0`,
         fontSize: theme.listFileEntry.fontSize,
         color: ({ dndState }: StyleState) =>
