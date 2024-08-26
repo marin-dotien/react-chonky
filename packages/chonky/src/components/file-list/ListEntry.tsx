@@ -36,10 +36,6 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
         const ChonkyIcon = useContext(ChonkyIconContext);
         const fileEntryHtmlProps = useFileEntryHtmlProps(file);
 
-        const isFolder = file?.isDir;
-
-        console.log('columns in list entry', columns);
-
         return (
             <div className={classes.listFileEntry} {...fileEntryHtmlProps}>
                 <div className={commonClasses.focusIndicator}></div>
@@ -66,48 +62,23 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
                     </div>
                 </div>
 
-                <div className={classes.listFileEntryProperty}>
-                    {file ? (
-                        file.parentId ?? <span>—</span>
-                    ) : (
-                        <TextPlaceholder minLength={10} maxLength={20} />
-                    )}
-                </div>
-
-                <div className={classes.listFileEntryProperty}>
-                    {file ? (
-                        fileModDateString ?? <span>—</span>
-                    ) : (
-                        <TextPlaceholder minLength={5} maxLength={15} />
-                    )}
-                </div>
-
-                <div className={classes.listFileEntryProperty}>
-                    {file ? (
-                        file?.author ?? <span>—</span>
-                    ) : (
-                        <TextPlaceholder minLength={5} maxLength={15} />
-                    )}
-                </div>
-
-                <div className={classes.listFileEntryProperty}>
-                    {!isFolder ? (
-                        file?.deadline ?? <span>—</span>
-                    ) : (
-                        <span className={classes.invisibleSpan}>-</span>
-                    )}
-                </div>
-
-                <div
-                    className={classes.listFileEntryProperty}
-                    style={{ justifyContent: 'flex-end' }}
-                >
-                    {!isFolder ? (
-                        file?.status ?? <span>—</span>
-                    ) : (
-                        <span className={classes.invisibleSpan}>-</span>
-                    )}
-                </div>
+                {columns.map((column, index) => (
+                    <div
+                        key={index}
+                        className={classes.listFileEntryProperty}
+                        style={
+                            column.textAlign === 'right'
+                                ? { justifyContent: 'flex-end' }
+                                : {}
+                        }
+                    >
+                        {file?.[column.key] !== undefined ? (
+                            file[column.key]
+                        ) : (
+                            <TextPlaceholder minLength={5} maxLength={15} />
+                        )}
+                    </div>
+                ))}
 
                 <div className={classes.listFileEntryOption}>
                     <button>...</button>
@@ -177,5 +148,4 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         display: 'inline-block',
         width: '100%',
     },
-    // ..
 }));
