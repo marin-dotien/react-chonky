@@ -1,9 +1,3 @@
-/**
- * @author Timur Kuzhagaliyev <tim.kuzh@gmail.com>
- * @copyright 2020
- * @license MIT
- */
-
 import React, { CSSProperties, useCallback, useMemo, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { FixedSizeList } from 'react-window';
@@ -60,22 +54,17 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
             <>
                 <div className={classes.headerRow} style={{ width }}>
                     {columns.map((column) => (
-                        <div key={column.key} className={classes.headerCellProperty}>
+                        <div
+                            key={column.key}
+                            className={classes.headerCellProperty}
+                            style={{
+                                flex: column.flex || '1',
+                                textAlign: column.textAlign || 'left',
+                            }}
+                        >
                             {column.label}
                         </div>
                     ))}
-                    {/* <div className={classes.headerCellName}>Naziv</div>
-                    <div className={classes.headerCellProperty}>Folder</div>
-                    <div className={classes.headerCellProperty}>Uređivano</div>
-                    <div className={classes.headerCellProperty}>Autor</div>
-                    <div className={classes.headerCellProperty}>Rok</div>
-                    <div
-                        className={classes.headerCellProperty}
-                        style={{ textAlign: 'right' }}
-                    >
-                        Status
-                    </div>
-                    <div className={classes.headerCellOptions}>Options</div> */}
                 </div>
                 <FixedSizeList
                     ref={listRef as any}
@@ -98,6 +87,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
         displayFileIds,
         width,
         getItemKey,
+        columns,
     ]);
 
     return listComponent;
@@ -113,21 +103,9 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         fontSize: theme.listFileEntry.headerFontSize,
         backgroundColor: 'transparent',
     },
-    headerCellName: {
-        flex: '0 1 20%', // Matches the name cell size in ListEntry
-        marginRight: '20px',
-        textTransform: 'uppercase',
-        textAlign: 'left',
-    },
     headerCellProperty: {
-        flex: '0 1 15%', // Matches the property cells in ListEntry
         marginRight: '20px',
         textTransform: 'uppercase',
-        textAlign: 'left',
-    },
-    headerCellOptions: {
-        flex: '0 1 5%',
-        opacity: '0',
     },
     row: {
         display: 'flex',
