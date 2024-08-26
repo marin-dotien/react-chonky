@@ -24,7 +24,7 @@ import { ColumnDefinition, ListContainer } from './ListContainer';
 
 export interface FileListProps {
     onScroll?: (e: UIEvent<HTMLDivElement>) => void;
-    columns: ColumnDefinition[];
+    columns?: ColumnDefinition[];
 }
 
 interface StyleState {
@@ -47,6 +47,12 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
     const classes = useStyles(viewConfig);
     const { onScroll, columns } = props;
 
+    const defaultColumns: ColumnDefinition[] = [
+        { key: 'name', label: 'Name', flex: '1', textAlign: 'left' },
+        { key: 'size', label: 'Size', flex: '0.5', textAlign: 'right' },
+        { key: 'modDate', label: 'Last Modified', flex: '0.5', textAlign: 'right' },
+    ];
+
     // In Chonky v0.x, this field was user-configurable. In Chonky v1.x+, we hardcode
     // this to `true` to simplify configuration. Users can just wrap Chonky in their
     // own `div` if they want to have finer control over the height.
@@ -58,13 +64,17 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
                 return <FileListEmpty width={width} height={viewConfig.entryHeight} />;
             } else if (viewConfig.mode === FileViewMode.List) {
                 return (
-                    <ListContainer width={width} height={height} columns={columns} />
+                    <ListContainer
+                        width={width}
+                        height={height}
+                        columns={columns || defaultColumns}
+                    />
                 );
             } else {
                 return <GridContainer width={width} height={height} />;
             }
         },
-        [displayFileIds, viewConfig]
+        [columns, displayFileIds, viewConfig]
     );
 
     const ChonkyIcon = useContext(ChonkyIconContext);
