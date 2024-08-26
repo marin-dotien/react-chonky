@@ -14,9 +14,17 @@ import { useInstanceVariable } from '../../util/hooks-helpers';
 import { makeLocalChonkyStyles } from '../../util/styles';
 import { SmartFileEntry } from './FileEntry';
 
+export interface ColumnDefinition {
+    key: string;
+    label: string;
+    flex?: string;
+    textAlign?: CSSProperties['textAlign'];
+}
+
 export interface FileListListProps {
     width: number;
     height: number;
+    columns: ColumnDefinition[];
 }
 
 export const ListContainer: React.FC<FileListListProps> = React.memo((props) => {
@@ -51,7 +59,12 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
         return (
             <>
                 <div className={classes.headerRow} style={{ width }}>
-                    <div className={classes.headerCellName}>Naziv</div>
+                    {columns.map((column) => (
+                        <div key={column.key} className={classes.headerCellProperty}>
+                            {column.label}
+                        </div>
+                    ))}
+                    {/* <div className={classes.headerCellName}>Naziv</div>
                     <div className={classes.headerCellProperty}>Folder</div>
                     <div className={classes.headerCellProperty}>Uređivano</div>
                     <div className={classes.headerCellProperty}>Autor</div>
@@ -62,7 +75,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
                     >
                         Status
                     </div>
-                    <div className={classes.headerCellOptions}>Options</div>
+                    <div className={classes.headerCellOptions}>Options</div> */}
                 </div>
                 <FixedSizeList
                     ref={listRef as any}
