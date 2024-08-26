@@ -11,14 +11,15 @@ import {
 } from './FileEntry-hooks';
 import { FileEntryName } from './FileEntryName';
 import { FileEntryState, useCommonEntryStyles } from './GridEntryPreview';
+import { ColumnDefinition } from './ListContainer';
 
 interface StyleState {
     entryState: FileEntryState;
     dndState: DndEntryState;
 }
 
-export const ListEntry: React.FC<FileEntryProps> = React.memo(
-    ({ file, selected, focused, dndState }) => {
+export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] }> =
+    React.memo(({ file, selected, focused, dndState, columns }) => {
         const entryState: FileEntryState = useFileEntryState(file, selected, focused);
         const dndIconName = useDndIcon(dndState);
 
@@ -36,6 +37,8 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
         const fileEntryHtmlProps = useFileEntryHtmlProps(file);
 
         const isFolder = file?.isDir;
+
+        console.log('columns in list entry', columns);
 
         return (
             <div className={classes.listFileEntry} {...fileEntryHtmlProps}>
@@ -111,8 +114,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                 </div>
             </div>
         );
-    }
-);
+    });
 
 const useStyles = makeLocalChonkyStyles((theme) => ({
     listFileEntry: {

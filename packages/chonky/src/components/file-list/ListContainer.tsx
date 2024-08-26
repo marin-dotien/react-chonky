@@ -58,7 +58,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
                             key={column.key}
                             className={classes.headerCellProperty}
                             style={{
-                                flex: column.flex || '1',
+                                flex: column.flex || '10%',
                                 textAlign: column.textAlign || 'left',
                             }}
                         >
