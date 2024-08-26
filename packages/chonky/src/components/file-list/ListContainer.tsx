@@ -28,7 +28,7 @@ export interface FileListListProps {
 }
 
 export const ListContainer: React.FC<FileListListProps> = React.memo((props) => {
-    const { width, height } = props;
+    const { width, height, columns } = props;
 
     const viewConfig = useSelector(selectFileViewConfig);
 

@@ -45,7 +45,7 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
 
     const localClasses = useLocalStyles(styleState);
     const classes = useStyles(viewConfig);
-    const { onScroll } = props;
+    const { onScroll, columns } = props;
 
     // In Chonky v0.x, this field was user-configurable. In Chonky v1.x+, we hardcode
     // this to `true` to simplify configuration. Users can just wrap Chonky in their
