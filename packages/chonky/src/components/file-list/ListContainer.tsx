@@ -45,6 +45,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
                         fileId={displayFileIds[data.index] ?? null}
                         displayIndex={data.index}
                         fileViewMode={FileViewMode.List}
+                        columns={columns}
                     />
                 </div>
             );

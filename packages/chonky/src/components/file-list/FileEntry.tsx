@@ -24,7 +24,7 @@ export interface SmartFileEntryProps {
     fileId: Nullable<string>;
     displayIndex: number;
     fileViewMode: FileViewMode;
-    columns?: ColumnDefinition[]; // Add columns prop
+    columns?: ColumnDefinition[];
 }
 
 const disabledDndState: DndEntryState = {
