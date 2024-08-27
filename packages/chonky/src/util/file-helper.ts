@@ -87,12 +87,6 @@ export class FileHelper {
         return null;
     }
 
-    public static formatDate(dateInput: Date | string | undefined): string {
-        if (!dateInput) return 'N/A';
-        const date = FileHelper.parseDate(dateInput);
-        return date ? date.toLocaleDateString() : 'Invalid Date';
-    }
-
     public static getChildrenCount(file: Nullable<FileData>): Nullable<number> {
         if (!file || typeof file.childrenCount !== 'number') return null;
 

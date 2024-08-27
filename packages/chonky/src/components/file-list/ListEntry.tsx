@@ -63,9 +63,12 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
                                 />
                             </div>
                         ) : null}
-                        {typeof file?.[column.accessor] === 'string' &&
-                        column.accessor.includes('date') ? (
-                            FileHelper.formatDate(file?.[column.accessor])
+                        {column.render ? (
+                            column.render(file?.[column.accessor], file)
+                        ) : file?.[column.accessor] instanceof Date ? (
+                            FileHelper.parseDate(
+                                file[column.accessor]
+                            )?.toLocaleDateString() || 'N/A'
                         ) : file?.[column.accessor] !== undefined ? (
                             column.accessor === 'name' ? (
                                 <FileEntryName file={file} />
