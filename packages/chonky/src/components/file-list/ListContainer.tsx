@@ -111,6 +111,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         textTransform: 'uppercase',
     },
     headerCellOptions: {
+        visibility: 'hidden',
         flex: '1 1 5%',
     },
     row: {
