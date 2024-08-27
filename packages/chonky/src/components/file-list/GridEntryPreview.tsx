@@ -222,7 +222,6 @@ export const useCommonEntryStyles = makeLocalChonkyStyles(() => ({
     selectionIndicator: {
         display: (state: FileEntryState) => (state.selected ? 'block' : 'none'),
         background: 'rgba(225,225, 225, 1)',
-        backgroundColor: 'rgba(0, 153, 255, .14)',
         position: 'absolute',
         height: '100%',
         width: '100%',
@@ -230,7 +229,7 @@ export const useCommonEntryStyles = makeLocalChonkyStyles(() => ({
     },
     focusIndicator: {
         display: (state: FileEntryState) => (state.focused ? 'block' : 'none'),
-        boxShadow: 'inset rgba(25, 25, 25, 0.2) 0 0 0 1px',
+        border: '1px solid rgba(25, 25, 25, 0.2)',
         position: 'absolute',
         height: '100%',
         width: '100%',
