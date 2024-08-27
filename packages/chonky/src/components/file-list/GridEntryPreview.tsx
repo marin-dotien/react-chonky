@@ -221,14 +221,7 @@ const useFileStyles = makeLocalChonkyStyles((theme) => ({
 export const useCommonEntryStyles = makeLocalChonkyStyles(() => ({
     selectionIndicator: {
         display: (state: FileEntryState) => (state.selected ? 'block' : 'none'),
-        background:
-            'repeating-linear-gradient(' +
-            '45deg,' +
-            'rgba(0,153,255,.14),' +
-            'rgba(0,153,255,.14) 10px,' +
-            'rgba(0,153,255,.25) 0,' +
-            'rgba(0,153,255,.25) 20px' +
-            ')',
+        background: 'rgba(225,225, 225, 1)',
         backgroundColor: 'rgba(0, 153, 255, .14)',
         position: 'absolute',
         height: '100%',
@@ -237,7 +230,7 @@ export const useCommonEntryStyles = makeLocalChonkyStyles(() => ({
     },
     focusIndicator: {
         display: (state: FileEntryState) => (state.focused ? 'block' : 'none'),
-        boxShadow: 'inset rgba(0, 0, 0, 1) 0 0 0 2px',
+        boxShadow: 'inset rgba(25, 25, 25, 0.2) 0 0 0 1px',
         position: 'absolute',
         height: '100%',
         width: '100%',
