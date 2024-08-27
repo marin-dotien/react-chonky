@@ -230,6 +230,7 @@ export const useCommonEntryStyles = makeLocalChonkyStyles(() => ({
     focusIndicator: {
         display: (state: FileEntryState) => (state.focused ? 'block' : 'none'),
         border: '1px solid rgba(25, 25, 25, 0.2)',
+        borderRadius: '5px',
         position: 'absolute',
         height: '100%',
         width: '100%',
