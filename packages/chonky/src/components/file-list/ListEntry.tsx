@@ -46,34 +46,35 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
                     ])}
                 ></div>
 
-                <div className={classes.listFileName}>
-                    <div className={classes.listFileEntryIcon}>
-                        <ChonkyIcon
-                            icon={dndIconName ?? entryState.icon}
-                            spin={dndIconName ? false : entryState.iconSpin}
-                            fixedWidth={true}
-                        />
-                    </div>
-                    <div
-                        className={classes.listFileEntryName}
-                        title={file ? file.name : undefined}
-                    >
-                        <FileEntryName file={file} />
-                    </div>
-                </div>
-
                 {columns.map((column, index) => (
                     <div
                         key={index}
-                        className={classes.listFileEntryProperty}
+                        className={
+                            column.key === 'name'
+                                ? classes.listFileName
+                                : classes.listFileEntryProperty
+                        }
                         style={
                             column.textAlign === 'right'
                                 ? { justifyContent: 'flex-end' }
                                 : {}
                         }
                     >
+                        {column.key === 'name' ? (
+                            <div className={classes.listFileEntryIcon}>
+                                <ChonkyIcon
+                                    icon={dndIconName ?? entryState.icon}
+                                    spin={dndIconName ? false : entryState.iconSpin}
+                                    fixedWidth={true}
+                                />
+                            </div>
+                        ) : null}
                         {file?.[column.key] !== undefined ? (
-                            file[column.key]
+                            column.key === 'name' ? (
+                                <FileEntryName file={file} />
+                            ) : (
+                                file[column.key]
+                            )
                         ) : (
                             <TextPlaceholder minLength={5} maxLength={15} />
                         )}
