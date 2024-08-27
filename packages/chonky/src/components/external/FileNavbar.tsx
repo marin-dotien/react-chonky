@@ -47,7 +47,7 @@ export const FileNavbar: React.FC<FileNavbarProps> = React.memo(() => {
                 >
                     {folderChainComponents}
                 </Breadcrumbs>
-                <SmartToolbarButton fileActionId={createFileAction.id} />
+                <SmartToolbarButton fileActionId={ChonkyActions.CreateFolder.id} />
             </Box>
         </Box>
     );
