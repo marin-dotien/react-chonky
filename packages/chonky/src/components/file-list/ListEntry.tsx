@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import { DndEntryState, FileEntryProps } from '../../types/file-list.types';
-import { useLocalizedFileEntryStrings } from '../../util/i18n';
+// import { useLocalizedFileEntryStrings } from '../../util/i18n';
 import { ChonkyIconContext } from '../../util/icon-helper';
 import { c, makeLocalChonkyStyles } from '../../util/styles';
 import { TextPlaceholder } from '../external/TextPlaceholder';
@@ -23,7 +23,7 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
         const entryState: FileEntryState = useFileEntryState(file, selected, focused);
         const dndIconName = useDndIcon(dndState);
 
-        const { fileModDateString } = useLocalizedFileEntryStrings(file);
+        // const { fileModDateString } = useLocalizedFileEntryStrings(file);
         const styleState = useMemo<StyleState>(
             () => ({
                 entryState,
