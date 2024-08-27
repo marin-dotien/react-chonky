@@ -1,6 +1,5 @@
 import React, { useContext, useMemo } from 'react';
 import { DndEntryState, FileEntryProps } from '../../types/file-list.types';
-// import { useLocalizedFileEntryStrings } from '../../util/i18n';
 import { ChonkyIconContext } from '../../util/icon-helper';
 import { c, makeLocalChonkyStyles } from '../../util/styles';
 import { TextPlaceholder } from '../external/TextPlaceholder';
@@ -12,6 +11,7 @@ import {
 import { FileEntryName } from './FileEntryName';
 import { FileEntryState, useCommonEntryStyles } from './GridEntryPreview';
 import { ColumnDefinition } from './ListContainer';
+import { FileHelper } from '../../util/file-helper';
 
 interface StyleState {
     entryState: FileEntryState;
@@ -23,7 +23,6 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
         const entryState: FileEntryState = useFileEntryState(file, selected, focused);
         const dndIconName = useDndIcon(dndState);
 
-        // const { fileModDateString } = useLocalizedFileEntryStrings(file);
         const styleState = useMemo<StyleState>(
             () => ({
                 entryState,
@@ -67,7 +66,9 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
                         {column.render ? (
                             column.render(file?.[column.accessor], file)
                         ) : file?.[column.accessor] instanceof Date ? (
-                            file[column.accessor].toLocaleDateString()
+                            FileHelper.parseDate(
+                                file[column.accessor]
+                            )?.toLocaleDateString() || 'N/A'
                         ) : file?.[column.accessor] !== undefined ? (
                             column.accessor === 'name' ? (
                                 <FileEntryName file={file} />
