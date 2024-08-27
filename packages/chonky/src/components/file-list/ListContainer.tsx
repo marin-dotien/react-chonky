@@ -7,13 +7,13 @@ import { FileViewMode } from '../../types/file-view.types';
 import { useInstanceVariable } from '../../util/hooks-helpers';
 import { makeLocalChonkyStyles } from '../../util/styles';
 import { SmartFileEntry } from './FileEntry';
-import { collapseClasses } from '@mui/material';
 
 export interface ColumnDefinition {
     accessor: string;
     label: string;
     flex?: string;
     justifyContent?: 'start' | 'center' | 'end';
+    render?: (value: any, row: any) => React.ReactNode;
 }
 
 export interface FileListListProps {
@@ -107,6 +107,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         backgroundColor: 'transparent',
     },
     headerCellProperty: {
+        display: 'flex',
         marginRight: '20px',
         textTransform: 'uppercase',
     },

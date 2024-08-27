@@ -64,7 +64,9 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
                                 />
                             </div>
                         ) : null}
-                        {file?.[column.accessor] !== undefined ? (
+                        {column.render ? (
+                            column.render(file?.[column.accessor], file)
+                        ) : file?.[column.accessor] !== undefined ? (
                             column.accessor === 'name' ? (
                                 <FileEntryName file={file} />
                             ) : (
