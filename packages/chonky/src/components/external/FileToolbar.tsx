@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode, useMemo } from 'react';
+import React, { ReactElement, ReactNode, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectToolbarItems, selectHideToolbarInfo } from '../../redux/selectors';
@@ -10,61 +10,68 @@ import { ToolbarSearch } from './ToolbarSearch';
 
 export interface FileToolbarProps {}
 
-export const FileToolbar: React.FC<FileToolbarProps & { children?: ReactNode }> = React.memo((props) => {
-  const { children } = props;
-  const classes = useStyles();
-  const toolbarItems = useSelector(selectToolbarItems);
+export const FileToolbar: React.FC<FileToolbarProps & { children?: ReactNode }> =
+    React.memo((props) => {
+        const { children } = props;
+        const classes = useStyles();
+        const toolbarItems = useSelector(selectToolbarItems);
 
-  const toolbarItemComponents = useMemo(() => {
-    const components: ReactElement[] = [];
-    for (let i = 0; i < toolbarItems.length; ++i) {
-      const item = toolbarItems[i];
+        useEffect(() => {
+            console.log('Toolbar Items:', toolbarItems);
+        }, [toolbarItems]);
 
-      const key = `toolbar-item-${typeof item === 'string' ? item : item.name}`;
-      const component =
-        typeof item === 'string' ? (
-          <SmartToolbarButton key={key} fileActionId={item} />
-        ) : (
-          <ToolbarDropdown key={key} {...item} />
+        const toolbarItemComponents = useMemo(() => {
+            const components: ReactElement[] = [];
+            for (let i = 0; i < toolbarItems.length; ++i) {
+                const item = toolbarItems[i];
+
+                const key = `toolbar-item-${
+                    typeof item === 'string' ? item : item.name
+                }`;
+                const component =
+                    typeof item === 'string' ? (
+                        <SmartToolbarButton key={key} fileActionId={item} />
+                    ) : (
+                        <ToolbarDropdown key={key} {...item} />
+                    );
+                components.push(component);
+            }
+            return components;
+        }, [toolbarItems]);
+
+        const hideToolbarInfo = useSelector(selectHideToolbarInfo);
+        return (
+            <div className={classes.toolbarWrapper}>
+                <div className={classes.toolbarContainer}>
+                    <div className={classes.toolbarLeft}>
+                        <ToolbarSearch />
+                        {!hideToolbarInfo && <ToolbarInfo />}
+                        {children}
+                    </div>
+                    <div className={classes.toolbarRight}>{toolbarItemComponents}</div>
+                </div>
+            </div>
         );
-      components.push(component);
-    }
-    return components;
-  }, [toolbarItems]);
-
-  const hideToolbarInfo = useSelector(selectHideToolbarInfo);
-  return (
-    <div className={classes.toolbarWrapper}>
-      <div className={classes.toolbarContainer}>
-        <div className={classes.toolbarLeft}>
-          <ToolbarSearch />
-          {!hideToolbarInfo && <ToolbarInfo />}
-          {children}
-        </div>
-        <div className={classes.toolbarRight}>{toolbarItemComponents}</div>
-      </div>
-    </div>
-  );
-});
+    });
 
 const useStyles = makeGlobalChonkyStyles((theme) => ({
-  toolbarWrapper: {},
-  toolbarContainer: {
-    flexWrap: 'wrap-reverse',
-    display: 'flex',
-  },
-  toolbarLeft: {
-    paddingBottom: theme.margins.rootLayoutMargin,
-    flexWrap: 'wrap',
-    flexGrow: 10000,
-    display: 'flex',
-  },
-  toolbarLeftFiller: {
-    flexGrow: 10000,
-  },
-  toolbarRight: {
-    paddingBottom: theme.margins.rootLayoutMargin,
-    flexWrap: 'wrap',
-    display: 'flex',
-  },
+    toolbarWrapper: {},
+    toolbarContainer: {
+        flexWrap: 'wrap-reverse',
+        display: 'flex',
+    },
+    toolbarLeft: {
+        paddingBottom: theme.margins.rootLayoutMargin,
+        flexWrap: 'wrap',
+        flexGrow: 10000,
+        display: 'flex',
+    },
+    toolbarLeftFiller: {
+        flexGrow: 10000,
+    },
+    toolbarRight: {
+        paddingBottom: theme.margins.rootLayoutMargin,
+        flexWrap: 'wrap',
+        display: 'flex',
+    },
 }));
