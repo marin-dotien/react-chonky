@@ -18,6 +18,12 @@ interface StyleState {
     dndState: DndEntryState;
 }
 
+const formatDateString = (dateString: string | undefined): string => {
+    if (!dateString) return 'N/A';
+    const date = FileHelper.parseDate(dateString);
+    return date ? date.toLocaleDateString() : 'Invalid Date';
+};
+
 export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] }> =
     React.memo(({ file, selected, focused, dndState, columns }) => {
         const entryState: FileEntryState = useFileEntryState(file, selected, focused);
@@ -64,14 +70,10 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
                             </div>
                         ) : null}
                         {column.render ? (
-                            column.render(
-                                FileHelper.parseDate(file?.[column.accessor]),
-                                file
-                            )
-                        ) : FileHelper.parseDate(file?.[column.accessor]) ? (
-                            FileHelper.parseDate(
-                                file?.[column.accessor]
-                            )?.toLocaleDateString() || 'N/A'
+                            column.render(file?.[column.accessor], file)
+                        ) : typeof file?.[column.accessor] === 'string' &&
+                          column.accessor.includes('date') ? (
+                            formatDateString(file?.[column.accessor])
                         ) : file?.[column.accessor] !== undefined ? (
                             column.accessor === 'name' ? (
                                 <FileEntryName file={file} />
