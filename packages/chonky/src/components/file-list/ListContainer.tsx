@@ -10,10 +10,10 @@ import { SmartFileEntry } from './FileEntry';
 import { collapseClasses } from '@mui/material';
 
 export interface ColumnDefinition {
-    key: string;
+    accessor: string;
     label: string;
     flex?: string;
-    textAlign?: CSSProperties['textAlign'];
+    textAlign?: 'start' | 'center' | 'end';
 }
 
 export interface FileListListProps {
@@ -57,7 +57,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
                 <div className={classes.headerRow} style={{ width }}>
                     {columns.map((column) => (
                         <div
-                            key={column.key}
+                            key={column.accessor}
                             className={classes.headerCellProperty}
                             style={{
                                 flex: column.flex || '10%',

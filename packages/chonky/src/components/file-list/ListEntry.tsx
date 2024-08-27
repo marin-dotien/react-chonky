@@ -52,10 +52,10 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
                         className={classes.listFileEntryProperty}
                         style={{
                             flex: column.flex || '10%',
-                            textAlign: column.textAlign || 'left',
+                            justifyContent: column.textAlign || 'left',
                         }}
                     >
-                        {column.key === 'name' ? (
+                        {column.accessor === 'name' ? (
                             <div className={classes.listFileEntryIcon}>
                                 <ChonkyIcon
                                     icon={dndIconName ?? entryState.icon}
@@ -64,11 +64,11 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
                                 />
                             </div>
                         ) : null}
-                        {file?.[column.key] !== undefined ? (
-                            column.key === 'name' ? (
+                        {file?.[column.accessor] !== undefined ? (
+                            column.accessor === 'name' ? (
                                 <FileEntryName file={file} />
                             ) : (
-                                file[column.key]
+                                file[column.accessor]
                             )
                         ) : (
                             <TextPlaceholder minLength={5} maxLength={15} />
@@ -89,7 +89,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         display: 'flex',
         height: '100%',
         alignItems: 'center',
-        padding: 4,
+        padding: '4px 0',
         boxShadow: `inset ${theme.palette.divider} 0 -1px 0`,
         fontSize: theme.listFileEntry.fontSize,
         color: ({ dndState }: StyleState) =>
