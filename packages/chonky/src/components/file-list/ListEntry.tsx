@@ -66,6 +66,8 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
                         ) : null}
                         {column.render ? (
                             column.render(file?.[column.accessor], file)
+                        ) : file?.[column.accessor] instanceof Date ? (
+                            file[column.accessor].toLocaleDateString()
                         ) : file?.[column.accessor] !== undefined ? (
                             column.accessor === 'name' ? (
                                 <FileEntryName file={file} />
