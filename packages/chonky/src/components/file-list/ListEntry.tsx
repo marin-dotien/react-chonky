@@ -49,16 +49,11 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
                 {columns.map((column, index) => (
                     <div
                         key={index}
-                        className={
-                            column.key === 'name'
-                                ? classes.listFileName
-                                : classes.listFileEntryProperty
-                        }
-                        style={
-                            column.textAlign === 'right'
-                                ? { justifyContent: 'flex-end' }
-                                : {}
-                        }
+                        className={classes.listFileEntryProperty}
+                        style={{
+                            flex: column.flex || '10%',
+                            textAlign: column.textAlign || 'left',
+                        }}
                     >
                         {column.key === 'name' ? (
                             <div className={classes.listFileEntryIcon}>
@@ -107,12 +102,6 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
     listFileEntrySelection: {
         opacity: 0.6,
     },
-    listFileName: {
-        zIndex: 20,
-        display: 'flex',
-        flex: '0 1 20%',
-        marginRight: '20px',
-    },
     listFileEntryIcon: {
         color: ({ entryState, dndState }: StyleState) =>
             dndState.dndIsOver
@@ -123,30 +112,13 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         fontSize: theme.listFileEntry.iconFontSize,
         boxSizing: 'border-box',
     },
-    listFileEntryName: {
-        overflow: 'hidden',
-        paddingLeft: 8,
-        textOverflow: 'ellipsis',
-        boxSizing: 'border-box',
-        whiteSpace: 'nowrap',
-    },
     listFileEntryProperty: {
         zIndex: 20,
         overflow: 'hidden',
         display: 'flex',
-        flex: '0 1 15%',
         marginRight: '20px',
         fontSize: theme.listFileEntry.propertyFontSize,
         boxSizing: 'border-box',
         whiteSpace: 'nowrap',
-    },
-    listFileEntryOption: {
-        flex: '0 1 5%',
-        textAlign: 'center',
-    },
-    invisibleSpan: {
-        visibility: 'hidden',
-        display: 'inline-block',
-        width: '100%',
     },
 }));
