@@ -48,9 +48,14 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
     const { onScroll, columns } = props;
 
     const defaultColumns: ColumnDefinition[] = [
-        { accessor: 'name', label: 'Name', flex: '20%', textAlign: 'start' },
-        { accessor: 'size', label: 'Size', flex: '10%', textAlign: 'start' },
-        { accessor: 'modDate', label: 'Last Modified', flex: '10%', textAlign: 'end' },
+        { accessor: 'name', label: 'Name', flex: '20%', justifyContent: 'start' },
+        { accessor: 'size', label: 'Size', flex: '10%', justifyContent: 'start' },
+        {
+            accessor: 'modDate',
+            label: 'Last Modified',
+            flex: '10%',
+            justifyContent: 'end',
+        },
     ];
 
     // In Chonky v0.x, this field was user-configurable. In Chonky v1.x+, we hardcode

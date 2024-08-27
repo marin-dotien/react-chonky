@@ -52,7 +52,7 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
                         className={classes.listFileEntryProperty}
                         style={{
                             flex: column.flex || '10%',
-                            justifyContent: column.textAlign || 'left',
+                            justifyContent: column.justifyContent || 'left',
                         }}
                     >
                         {column.accessor === 'name' ? (

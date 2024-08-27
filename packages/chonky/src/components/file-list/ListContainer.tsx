@@ -13,7 +13,7 @@ export interface ColumnDefinition {
     accessor: string;
     label: string;
     flex?: string;
-    textAlign?: 'start' | 'center' | 'end';
+    justifyContent?: 'start' | 'center' | 'end';
 }
 
 export interface FileListListProps {
@@ -61,7 +61,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
                             className={classes.headerCellProperty}
                             style={{
                                 flex: column.flex || '10%',
-                                textAlign: column.textAlign || 'left',
+                                justifyContent: column.justifyContent || 'left',
                             }}
                         >
                             {column.label}
