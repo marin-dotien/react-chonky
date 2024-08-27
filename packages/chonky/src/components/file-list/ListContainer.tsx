@@ -7,6 +7,7 @@ import { FileViewMode } from '../../types/file-view.types';
 import { useInstanceVariable } from '../../util/hooks-helpers';
 import { makeLocalChonkyStyles } from '../../util/styles';
 import { SmartFileEntry } from './FileEntry';
+import { collapseClasses } from '@mui/material';
 
 export interface ColumnDefinition {
     key: string;
@@ -66,6 +67,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
                             {column.label}
                         </div>
                     ))}
+                    <div className={classes.headerCellOptions}>Options</div>
                 </div>
                 <FixedSizeList
                     ref={listRef as any}
@@ -107,6 +109,9 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
     headerCellProperty: {
         marginRight: '20px',
         textTransform: 'uppercase',
+    },
+    headerCellOptions: {
+        flex: '1 1 5%',
     },
     row: {
         display: 'flex',

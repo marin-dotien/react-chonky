@@ -76,7 +76,7 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
                     </div>
                 ))}
 
-                <div className={classes.listFileEntryOption}>
+                <div className={classes.listFileEntryOptions}>
                     <button>...</button>
                 </div>
             </div>
@@ -120,5 +120,9 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         fontSize: theme.listFileEntry.propertyFontSize,
         boxSizing: 'border-box',
         whiteSpace: 'nowrap',
+    },
+    listFileEntryOptions: {
+        flex: '1 1 5%',
+        textAlign: 'center',
     },
 }));
