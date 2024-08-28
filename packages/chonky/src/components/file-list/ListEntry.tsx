@@ -38,12 +38,7 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
         return (
             <div className={classes.listFileEntry} {...fileEntryHtmlProps}>
                 <div className={commonClasses.focusIndicator}></div>
-                <div
-                    className={c([
-                        commonClasses.selectionIndicator,
-                        classes.listFileEntrySelection,
-                    ])}
-                ></div>
+                <div className={commonClasses.selectionIndicator}></div>
 
                 {columns.map((column, index) => (
                     <div
@@ -103,9 +98,6 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
                     ? theme.dnd.canDropColor
                     : theme.dnd.cannotDropColor
                 : 'inherit',
-    },
-    listFileEntrySelection: {
-        opacity: 0.6,
     },
     listFileEntryIcon: {
         color: ({ entryState, dndState }: StyleState) =>

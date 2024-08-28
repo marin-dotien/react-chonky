@@ -221,16 +221,19 @@ const useFileStyles = makeLocalChonkyStyles((theme) => ({
 export const useCommonEntryStyles = makeLocalChonkyStyles(() => ({
     selectionIndicator: {
         display: (state: FileEntryState) => (state.selected ? 'block' : 'none'),
-        background: 'rgba(255,255, 255, 1)',
+        background: '#FFFFFF',
         position: 'absolute',
-        height: '100%',
-        width: '100%',
+        top: '-1px',
+        left: '-1px',
+        right: '-1px',
+        bottom: '-1px',
         zIndex: 10,
         borderRadius: '5px',
+        border: '1px solid #CCCBC7',
     },
     focusIndicator: {
         display: (state: FileEntryState) => (state.focused ? 'block' : 'none'),
-        border: '1px solid rgba(25, 25, 25, 0.2)',
+        border: '1px solid #CCCBC7',
         borderRadius: '5px',
         position: 'absolute',
         top: '-1px',
@@ -238,6 +241,5 @@ export const useCommonEntryStyles = makeLocalChonkyStyles(() => ({
         right: '0',
         bottom: '0',
         zIndex: 11,
-        boxShadow: '1px 1px 1px 5px #F9F7F2',
     },
 }));
