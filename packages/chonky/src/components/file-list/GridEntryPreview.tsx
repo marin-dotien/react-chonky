@@ -221,19 +221,22 @@ const useFileStyles = makeLocalChonkyStyles((theme) => ({
 export const useCommonEntryStyles = makeLocalChonkyStyles(() => ({
     selectionIndicator: {
         display: (state: FileEntryState) => (state.selected ? 'block' : 'none'),
-        background: 'rgba(225,225, 225, 1)',
+        background: 'rgba(255,255, 255, 1)',
         position: 'absolute',
         height: '100%',
         width: '100%',
         zIndex: 10,
+        borderRadius: 'inherit',
     },
     focusIndicator: {
         display: (state: FileEntryState) => (state.focused ? 'block' : 'none'),
         border: '1px solid rgba(25, 25, 25, 0.2)',
         borderRadius: '5px',
         position: 'absolute',
-        height: '100%',
-        width: '100%',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
         zIndex: 11,
     },
 }));
