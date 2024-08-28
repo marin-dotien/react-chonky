@@ -236,7 +236,7 @@ export const useCommonEntryStyles = makeLocalChonkyStyles(() => ({
         border: '1px solid #CCCBC7',
         borderRadius: '5px',
         position: 'absolute',
-        top: '-1px',
+        top: '0px',
         left: '0',
         right: '0',
         bottom: '0',
