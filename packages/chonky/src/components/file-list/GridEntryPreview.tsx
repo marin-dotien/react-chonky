@@ -241,5 +241,6 @@ export const useCommonEntryStyles = makeLocalChonkyStyles(() => ({
         right: '0',
         bottom: '0',
         zIndex: 11,
+        boxShadow: '1px 1px 1px 5px #F9F7F2',
     },
 }));
