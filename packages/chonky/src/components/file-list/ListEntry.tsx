@@ -116,6 +116,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
                 : entryState.color,
         fontSize: theme.listFileEntry.iconFontSize,
         boxSizing: 'border-box',
+        marginRight: '10px',
     },
     listFileEntryProperty: {
         zIndex: 20,

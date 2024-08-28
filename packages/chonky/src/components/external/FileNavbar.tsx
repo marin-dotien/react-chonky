@@ -13,12 +13,16 @@ import { important, makeGlobalChonkyStyles } from '../../util/styles';
 import { useFolderChainItems } from './FileNavbar-hooks';
 import { FolderChainButton } from './FolderChainButton';
 import { SmartToolbarButton } from './ToolbarButton';
+import { useSelector } from 'react-redux';
+import { selectFileActionMap } from '../../redux/selectors';
 
 export interface FileNavbarProps {}
 
 export const FileNavbar: React.FC<FileNavbarProps> = React.memo(() => {
     const classes = useStyles();
     const folderChainItems = useFolderChainItems();
+
+    const fileActionMap = useSelector(selectFileActionMap);
 
     const folderChainComponents = useMemo(() => {
         const components: ReactElement[] = [];
@@ -48,6 +52,9 @@ export const FileNavbar: React.FC<FileNavbarProps> = React.memo(() => {
                     {folderChainComponents}
                 </Breadcrumbs>
                 <SmartToolbarButton fileActionId={ChonkyActions.CreateFolder.id} />
+                {fileActionMap['create_file'] && (
+                    <SmartToolbarButton fileActionId={'create_file'} />
+                )}
             </Box>
         </Box>
     );
