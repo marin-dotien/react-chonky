@@ -111,6 +111,8 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         zIndex: 20,
         overflow: 'hidden',
         display: 'flex',
+        height: '100%',
+        alignItems: 'center',
         marginRight: '20px',
         fontSize: theme.listFileEntry.propertyFontSize,
         boxSizing: 'border-box',
