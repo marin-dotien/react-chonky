@@ -111,6 +111,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
     },
     listFileEntryProperty: {
         zIndex: 20,
+        position: 'relative',
         overflow: 'hidden',
         display: 'flex',
         height: '100%',
