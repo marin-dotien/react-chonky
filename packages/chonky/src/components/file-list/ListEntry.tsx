@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from 'react';
 import { DndEntryState, FileEntryProps } from '../../types/file-list.types';
 import { ChonkyIconContext } from '../../util/icon-helper';
-import { c, makeLocalChonkyStyles } from '../../util/styles';
+import { makeLocalChonkyStyles } from '../../util/styles';
 import { TextPlaceholder } from '../external/TextPlaceholder';
 import {
     useDndIcon,
