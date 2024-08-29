@@ -67,7 +67,6 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
                             {column.label}
                         </div>
                     ))}
-                    <div className={classes.headerCellOptions}>Options</div>
                 </div>
                 <FixedSizeList
                     ref={listRef as any}
@@ -110,10 +109,6 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         display: 'flex',
         marginRight: '20px',
         textTransform: 'uppercase',
-    },
-    headerCellOptions: {
-        visibility: 'hidden',
-        flex: '1 1 5%',
     },
     row: {
         display: 'flex',
