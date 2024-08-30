@@ -65,8 +65,8 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
                                 visibility:
                                     column.accessor === 'id' &&
                                     column.label === 'Actions'
-                                        ? 'visible'
-                                        : 'hidden',
+                                        ? 'hidden'
+                                        : 'visible',
                             }}
                         >
                             {column.label}
