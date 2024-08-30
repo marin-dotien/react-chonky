@@ -47,8 +47,7 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
                         style={{
                             flex: column.flex || '10%',
                             justifyContent: column.justifyContent || 'left',
-                            overflow:
-                                column.accessor === 'actions' ? 'visible' : 'hidden',
+                            overflow: column.accessor === 'id' ? 'visible' : 'hidden',
                         }}
                     >
                         {column.accessor === 'name' ? (
