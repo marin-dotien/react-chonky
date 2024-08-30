@@ -62,6 +62,11 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
                             style={{
                                 flex: column.flex || '10%',
                                 justifyContent: column.justifyContent || 'left',
+                                visibility:
+                                    column.accessor === 'id' &&
+                                    column.label === 'Actions'
+                                        ? 'visible'
+                                        : 'hidden',
                             }}
                         >
                             {column.label}
