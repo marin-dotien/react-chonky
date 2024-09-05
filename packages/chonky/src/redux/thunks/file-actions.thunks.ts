@@ -90,7 +90,7 @@ export const thunkUpdateToolbarNContextMenuItems =
         const groupIcons: Record<string, ChonkyIconName> = {
             Actions: ChonkyIconName.dropdown,
             Options: ChonkyIconName.config,
-            Navigation: ChonkyIconName.dropdown,
+            Navigation: ChonkyIconName.plus,
         };
         const groupSortOrder: Record<string, number> = {
             Options: 0,
@@ -148,8 +148,7 @@ export const thunkUpdateToolbarNContextMenuItems =
 
             // process navbar items
             if (button.navbar) {
-                // Ensure every action goes into a group, even if it doesn't have one.
-                const groupName = button.group || 'General'; // Default group for ungrouped actions
+                const groupName = button.group || 'new';
                 const group = getGroup(navbarGroupItems, seenNavbarGroups, groupName);
                 group.fileActionIds.push(action.id);
             }
