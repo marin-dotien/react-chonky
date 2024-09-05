@@ -106,6 +106,7 @@ export const thunkUpdateToolbarNContextMenuItems =
 
         const navbarItems: FileActionMenuItem[] = [];
         const navbarGroupItems: FileActionGroup[] = [];
+        const seenNavbarGroups: SeenGroupMap = {};
 
         const contextMenuItems: FileActionMenuItem[] = [];
         const seenContextMenuGroups: SeenGroupMap = {};
@@ -161,7 +162,6 @@ export const thunkUpdateToolbarNContextMenuItems =
 
             // process navbar items
             if (button.navbar) {
-                // Check for a specific "navigation" key in button
                 if (button.group) {
                     const group = getGroup(
                         navbarGroupItems,
