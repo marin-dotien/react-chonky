@@ -14,7 +14,7 @@ import { useFolderChainItems } from './FileNavbar-hooks';
 import { FolderChainButton } from './FolderChainButton';
 import { SmartToolbarButton } from './ToolbarButton';
 import { useSelector } from 'react-redux';
-import { selectNavbarItems, selectToolbarItems } from '../../redux/selectors';
+import { selectNavbarItems } from '../../redux/selectors';
 import { FileNavbarDropdown } from './FileNavbarDropdown';
 
 export interface FileNavbarProps {}
