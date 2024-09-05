@@ -148,16 +148,10 @@ export const thunkUpdateToolbarNContextMenuItems =
 
             // process navbar items
             if (button.navbar) {
-                if (button.group) {
-                    const group = getGroup(
-                        navbarGroupItems,
-                        seenNavbarGroups,
-                        button.group
-                    );
-                    group.fileActionIds.push(action.id);
-                } else {
-                    navbarItems.push(action.id);
-                }
+                // Ensure every action goes into a group, even if it doesn't have one.
+                const groupName = button.group || 'General'; // Default group for ungrouped actions
+                const group = getGroup(navbarGroupItems, seenNavbarGroups, groupName);
+                group.fileActionIds.push(action.id);
             }
 
             // process context menu items
