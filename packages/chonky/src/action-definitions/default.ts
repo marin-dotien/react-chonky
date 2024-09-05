@@ -24,6 +24,7 @@ export const DefaultActions = {
             button: {
                 name: 'Open selection',
                 toolbar: true,
+                navbar: false,
                 contextMenu: true,
                 group: 'Actions',
                 icon: ChonkyIconName.openFiles,
@@ -47,6 +48,7 @@ export const DefaultActions = {
         button: {
             name: 'Select all files',
             toolbar: true,
+            navbar: false,
             contextMenu: true,
             group: 'Actions',
             icon: ChonkyIconName.selectAllFiles,
@@ -70,6 +72,7 @@ export const DefaultActions = {
         button: {
             name: 'Clear selection',
             toolbar: true,
+            navbar: false,
             contextMenu: true,
             group: 'Actions',
             icon: ChonkyIconName.clearSelection,
@@ -91,6 +94,7 @@ export const DefaultActions = {
         button: {
             name: 'Switch to List',
             toolbar: true,
+            navbar: false,
             icon: ChonkyIconName.list,
             // iconOnly: true,
             group: 'Options',
@@ -111,6 +115,7 @@ export const DefaultActions = {
         button: {
             name: 'Switch to Compact',
             toolbar: true,
+            navbar: false,
             icon: ChonkyIconName.compact,
             // iconOnly: true,
             group: 'Options',
@@ -125,6 +130,7 @@ export const DefaultActions = {
         button: {
             name: 'Switch to Grid',
             toolbar: true,
+            navbar: false,
             icon: ChonkyIconName.smallThumbnail,
             // iconOnly: true,
             group: 'Options',
@@ -140,6 +146,7 @@ export const DefaultActions = {
         button: {
             name: 'Sort by name',
             toolbar: true,
+            navbar: false,
             group: 'Options',
         },
     } as const),
@@ -152,6 +159,7 @@ export const DefaultActions = {
         button: {
             name: 'Sort by size',
             toolbar: true,
+            navbar: false,
             group: 'Options',
         },
     } as const),
@@ -165,6 +173,7 @@ export const DefaultActions = {
         button: {
             name: 'Sort by date',
             toolbar: true,
+            navbar: false,
             group: 'Options',
         },
     } as const),
@@ -181,6 +190,7 @@ export const DefaultActions = {
         button: {
             name: 'Show hidden files',
             toolbar: true,
+            navbar: false,
             group: 'Options',
         },
     } as const),
@@ -197,6 +207,7 @@ export const DefaultActions = {
         button: {
             name: 'Show folders first',
             toolbar: true,
+            navbar: false,
             group: 'Options',
         },
     } as const),
@@ -225,6 +236,7 @@ export const DefaultActions = {
         button: {
             name: 'Enable dark mode',
             toolbar: true,
+            navbar: false,
             icon: ChonkyIconName.list,
             iconOnly: true,
         },

@@ -92,8 +92,8 @@ export interface FileAction {
 export interface FileActionButton {
     name: string; // Button name
     toolbar?: boolean; // Whether to show the button in the toolbar
-    contextMenu?: boolean; // Whether to show the button in the context menu
     navbar?: boolean; // Whether to show the button in the navbar
+    contextMenu?: boolean; // Whether to show the button in the context menu
     group?: string; // Button group (dropdown in toolbar or section in context menu)
     tooltip?: string; // Help tooltip text
     icon?: ChonkyIconName | string | any; // Icon name
