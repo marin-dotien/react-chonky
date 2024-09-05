@@ -146,20 +146,6 @@ export const thunkUpdateToolbarNContextMenuItems =
                 }
             }
 
-            // process context menu items
-            if (button.contextMenu) {
-                if (button.group) {
-                    const group = getGroup(
-                        contextMenuItems,
-                        seenContextMenuGroups,
-                        button.group
-                    );
-                    group.fileActionIds.push(action.id);
-                } else {
-                    contextMenuItems.push(action.id);
-                }
-            }
-
             // process navbar items
             if (button.navbar) {
                 if (button.group) {
@@ -171,6 +157,20 @@ export const thunkUpdateToolbarNContextMenuItems =
                     group.fileActionIds.push(action.id);
                 } else {
                     navbarItems.push(action.id);
+                }
+            }
+
+            // process context menu items
+            if (button.contextMenu) {
+                if (button.group) {
+                    const group = getGroup(
+                        contextMenuItems,
+                        seenContextMenuGroups,
+                        button.group
+                    );
+                    group.fileActionIds.push(action.id);
+                } else {
+                    contextMenuItems.push(action.id);
                 }
             }
         }

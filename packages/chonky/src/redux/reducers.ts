@@ -43,7 +43,7 @@ const reducers = {
             [FileActionMenuItem[], FileActionMenuItem[], FileActionMenuItem[]]
         >
     ) {
-        [state.toolbarItems, state.contextMenuItems, state.navbarItems] =
+        [state.toolbarItems, state.navbarItems, state.contextMenuItems] =
             action.payload;
     },
 
