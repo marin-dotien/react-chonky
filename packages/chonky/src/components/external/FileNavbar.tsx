@@ -6,7 +6,7 @@
 
 import Box from '@mui/material/Box';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
-import React, { ReactElement, useMemo } from 'react';
+import React, { ReactElement, useEffect, useMemo } from 'react';
 
 import { ChonkyActions } from '../../action-definitions/index';
 import { important, makeGlobalChonkyStyles } from '../../util/styles';
@@ -14,7 +14,8 @@ import { useFolderChainItems } from './FileNavbar-hooks';
 import { FolderChainButton } from './FolderChainButton';
 import { SmartToolbarButton } from './ToolbarButton';
 import { useSelector } from 'react-redux';
-import { selectFileActionMap } from '../../redux/selectors';
+import { selectToolbarItems } from '../../redux/selectors';
+import { FileNavbarDropdown } from './FileNavbarDropdown';
 
 export interface FileNavbarProps {}
 
@@ -22,7 +23,28 @@ export const FileNavbar: React.FC<FileNavbarProps> = React.memo(() => {
     const classes = useStyles();
     const folderChainItems = useFolderChainItems();
 
-    const fileActionMap = useSelector(selectFileActionMap);
+    const navbarItems = useSelector(selectToolbarItems);
+
+    useEffect(() => {
+        console.log('Navbar Items:', navbarItems);
+    }, [navbarItems]);
+
+    const navbarItemComponents = useMemo(() => {
+        const components: ReactElement[] = [];
+        for (let i = 0; i < navbarItems.length; ++i) {
+            const item = navbarItems[i];
+
+            const key = `toolbar-item-${typeof item === 'string' ? item : item.name}`;
+            const component =
+                typeof item === 'string' ? (
+                    <SmartToolbarButton key={key} fileActionId={item} />
+                ) : (
+                    <FileNavbarDropdown key={key} {...item} />
+                );
+            components.push(component);
+        }
+        return components;
+    }, [navbarItems]);
 
     const folderChainComponents = useMemo(() => {
         const components: ReactElement[] = [];
@@ -51,10 +73,8 @@ export const FileNavbar: React.FC<FileNavbarProps> = React.memo(() => {
                 >
                     {folderChainComponents}
                 </Breadcrumbs>
-                <SmartToolbarButton fileActionId={ChonkyActions.CreateFolder.id} />
-                {fileActionMap['create_file'] && (
-                    <SmartToolbarButton fileActionId={'create_file'} />
-                )}
+
+                <div>{navbarItemComponents}</div>
             </Box>
         </Box>
     );
