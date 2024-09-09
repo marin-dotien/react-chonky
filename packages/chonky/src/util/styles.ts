@@ -12,7 +12,7 @@ export const lightTheme = {
         debugPurple: '#d2bdfa',
         debugYellow: '#fae9bd',
 
-        textActive: '#09f',
+        textActive: '#191919',
     },
 
     fontSizes: {
@@ -32,8 +32,8 @@ export const lightTheme = {
     toolbar: {
         size: 30,
         lineHeight: '30px', // `px` suffix is required for `line-height` fields to work
-        buttonPadding: 8,
-        fontSize: 15,
+        buttonPadding: 0,
+        fontSize: 12,
         buttonRadius: 4,
     },
 

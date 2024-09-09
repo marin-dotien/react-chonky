@@ -34,7 +34,7 @@ export const FileNavbar: React.FC<FileNavbarProps> = React.memo(() => {
         for (let i = 0; i < navbarItems.length; ++i) {
             const item = navbarItems[i];
 
-            const key = `toolbar-item-${typeof item === 'string' ? item : item.name}`;
+            const key = `navbar-item-${typeof item === 'string' ? item : item.name}`;
             const component =
                 typeof item === 'string' ? (
                     <SmartToolbarButton key={key} fileActionId={item} />
