@@ -104,12 +104,14 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
     },
 
     iconDropdown: {
-        fontSize: '12px',
+        display: 'flex',
+        alignitems: 'center',
         marginLeft: 10,
-        marginTop: 10,
         padding: 6,
         borderRadius: '50%',
-        backgroundColor: theme.colors.textActive,
+        fontSize: '12px',
+        color: '#FFFFFF',
+        backgroundColor: '#191919',
     },
 
     activeButton: {
