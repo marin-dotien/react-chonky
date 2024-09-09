@@ -91,10 +91,7 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
         paddingLeft: theme.toolbar.buttonPadding,
         paddingRight: theme.toolbar.buttonPadding,
         color: '#191919',
-
-        '&:hover': {
-            backgroundColor: 'transparent',
-        },
+        backgroundColor: 'transparent !important',
     },
 
     iconWithText: {
