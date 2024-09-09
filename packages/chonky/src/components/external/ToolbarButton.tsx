@@ -90,21 +90,31 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
         paddingTop: important(0),
         paddingLeft: theme.toolbar.buttonPadding,
         paddingRight: theme.toolbar.buttonPadding,
+        color: '#191919',
+
+        '&:hover': {
+            backgroundColor: 'transparent',
+        },
     },
+
     iconWithText: {
         marginRight: 8,
     },
+
     iconOnlyButton: {
         width: theme.toolbar.size,
         textAlign: 'center',
     },
+
     iconDropdown: {
         fontSize: '12px',
-        marginLeft: 2,
-        marginTop: 1,
+        marginLeft: 10,
+        marginTop: 10,
         padding: 6,
+        borderRadius: '50%',
         backgroundColor: theme.colors.textActive,
     },
+
     activeButton: {
         color: important(theme.colors.textActive),
     },

@@ -12,7 +12,7 @@ export const lightTheme = {
         debugPurple: '#d2bdfa',
         debugYellow: '#fae9bd',
 
-        textActive: '#191919',
+        textActive: '#09f',
     },
 
     fontSizes: {
