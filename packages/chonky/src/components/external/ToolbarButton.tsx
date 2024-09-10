@@ -92,7 +92,7 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
         paddingLeft: theme.toolbar.buttonPadding,
         paddingRight: theme.toolbar.buttonPadding,
         color: theme.palette.text.primary,
-        backgroundColor: 'transparent !important',
+        backgroundColor: theme.colors.transparent,
     },
 
     iconWithText: {
@@ -113,6 +113,9 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
         fontSize: '12px',
         color: theme.colors.white,
         backgroundColor: theme.colors.primary,
+        '&:hover': {
+            backgroundColor: theme.colors.black,
+        },
     },
 
     activeButton: {
