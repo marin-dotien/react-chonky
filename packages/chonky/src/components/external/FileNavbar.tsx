@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import React, { ReactElement, useEffect, useMemo } from 'react';
 
-import { ChonkyActions } from '../../action-definitions/index';
+// import { ChonkyActions } from '../../action-definitions/index';
 import { important, makeGlobalChonkyStyles } from '../../util/styles';
 import { useFolderChainItems } from './FileNavbar-hooks';
 import { FolderChainButton } from './FolderChainButton';
@@ -66,7 +66,7 @@ export const FileNavbar: React.FC<FileNavbarProps> = React.memo(() => {
     return (
         <Box className={classes.navbarWrapper}>
             <Box className={classes.navbarContainer}>
-                <SmartToolbarButton fileActionId={ChonkyActions.OpenParentFolder.id} />
+                {/* <SmartToolbarButton fileActionId={ChonkyActions.OpenParentFolder.id} /> */}
                 <Breadcrumbs
                     className={classes.navbarBreadcrumbs}
                     classes={{ separator: classes.separator }}

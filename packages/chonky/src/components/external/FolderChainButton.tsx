@@ -9,9 +9,9 @@ import React, { useContext, useMemo } from 'react';
 import { DndEntryState } from '../../types/file-list.types';
 // import { ChonkyIconName } from '../../types/icons.types';
 import { useDndHoverOpen, useFileDrop } from '../../util/dnd';
-import { ChonkyIconContext } from '../../util/icon-helper';
+// import { ChonkyIconContext } from '../../util/icon-helper';
 import { c, important, makeLocalChonkyStyles } from '../../util/styles';
-import { useDndIcon } from '../file-list/FileEntry-hooks';
+// import { useDndIcon } from '../file-list/FileEntry-hooks';
 import { FolderChainItem } from './FileNavbar-hooks';
 import { ToolbarButton } from './ToolbarButton';
 
@@ -37,8 +37,8 @@ export const FolderChainButton: React.FC<FolderChainButtonProps> = React.memo(
             [dndCanDrop, dndIsOver]
         );
         useDndHoverOpen(file, dndState);
-        const dndIconName = useDndIcon(dndState);
-        const ChonkyIcon = useContext(ChonkyIconContext);
+        // const dndIconName = useDndIcon(dndState);
+        // const ChonkyIcon = useContext(ChonkyIconContext);
 
         const classes = useStyles(dndState);
         const className = c({
@@ -54,13 +54,17 @@ export const FolderChainButton: React.FC<FolderChainButtonProps> = React.memo(
 
         return (
             <div className={classes.buttonContainer} ref={file ? drop : null}>
-                {file && dndIconName && (
+                {/* {file && dndIconName && (
                     <div className={classes.dndIndicator}>
                         <ChonkyIcon icon={dndIconName} fixedWidth={true} />
                     </div>
-                )}
+                )} */}
 
-                {first && <span>Welcome to Lexi for </span>}
+                {first && (
+                    <span className={classes.breadcrumbsIntroText}>
+                        Welcome to Lexi for{' '}
+                    </span>
+                )}
                 <ToolbarButton
                     // icon={icon}
                     className={className}
@@ -113,5 +117,9 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         left: '50%',
         top: '50%',
         zIndex: 5,
+    },
+
+    breadcrumbsIntroText: {
+        color: theme.colors.black,
     },
 }));
