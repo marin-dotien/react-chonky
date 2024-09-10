@@ -91,11 +91,12 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
         fontSize: important(theme.toolbar.fontSize),
         height: theme.toolbar.size,
         width: theme.toolbar.size,
-        padding: '0px !important',
+        padding: important(0),
     },
     navbarBreadcrumbs: {
         fontSize: important(theme.toolbar.fontSize),
         flexGrow: 100,
+        fontWeight: 700,
     },
     separator: {
         marginRight: important(4),

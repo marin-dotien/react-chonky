@@ -5,6 +5,12 @@ import { createUseStyles } from 'react-jss';
 import { DeepPartial } from 'tsdef';
 
 export const lightTheme = {
+    pallete: {
+        text: {
+            primary: '#191919',
+        },
+    },
+
     colors: {
         debugRed: '#fabdbd',
         debugBlue: '#bdd8fa',
@@ -20,10 +26,6 @@ export const lightTheme = {
 
         borderGray: '#DEDEDE',
         transparent: 'transparent,',
-    },
-
-    text: {
-        primary: '#191919', // Primary text color
     },
 
     fontSizes: {

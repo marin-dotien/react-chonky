@@ -91,7 +91,7 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
         paddingTop: important(0),
         paddingLeft: theme.toolbar.buttonPadding,
         paddingRight: theme.toolbar.buttonPadding,
-        color: '#191919',
+        color: theme.palette.text.primary,
         backgroundColor: 'transparent !important',
     },
 
@@ -111,8 +111,8 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
         padding: 6,
         borderRadius: '50%',
         fontSize: '12px',
-        color: '#FFFFFF',
-        backgroundColor: '#191919',
+        color: theme.colors.white,
+        backgroundColor: theme.colors.primary,
     },
 
     activeButton: {
