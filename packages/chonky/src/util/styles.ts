@@ -5,7 +5,7 @@ import { createUseStyles } from 'react-jss';
 import { DeepPartial } from 'tsdef';
 
 export const lightTheme = {
-    pallete: {
+    palette: {
         text: {
             primary: '#191919',
         },
