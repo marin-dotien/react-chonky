@@ -61,16 +61,20 @@ export const FileNavbarDropdown: React.FC<FileNavbarDropdownProps> = React.memo(
                     elevation={2}
                     anchorEl={anchor}
                     anchorOrigin={{
-                        vertical: 'bottom',
+                        vertical: 'top',
                         horizontal: 'left',
-                    }}
-                    sx={{
-                        boxShadow: 'none',
                     }}
                     onClose={handleClose}
                     open={Boolean(anchor)}
                     transitionDuration={150}
                     classes={{ list: classes.dropdownList }}
+                    slotProps={{
+                        paper: {
+                            sx: {
+                                boxShadow: 'none',
+                            },
+                        },
+                    }}
                 >
                     {menuItemComponents}
                 </Menu>
