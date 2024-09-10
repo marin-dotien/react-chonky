@@ -113,9 +113,6 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
         fontSize: '12px',
         color: theme.colors.white,
         backgroundColor: theme.colors.primary,
-        '&:hover': {
-            backgroundColor: theme.colors.black,
-        },
     },
 
     activeButton: {
