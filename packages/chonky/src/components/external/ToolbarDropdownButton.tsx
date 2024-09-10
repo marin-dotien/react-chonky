@@ -43,6 +43,7 @@ export const ToolbarDropdownButton = React.forwardRef(
                 className={className}
                 onClick={onClick}
                 disabled={disabled}
+                disableRipple
             >
                 {icon && (
                     <ListItemIcon className={classes.icon}>
