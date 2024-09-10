@@ -14,7 +14,11 @@ export const lightTheme = {
 
         textActive: '#09f',
 
-        borderGray: 'rgb(204, 203, 199);',
+        primary: '#011EF4',
+        black: '#191919',
+        white: '#FFFFFF',
+
+        borderGray: '#DEDEDE',
         transparent: 'transparent,',
     },
 
@@ -36,7 +40,8 @@ export const lightTheme = {
         size: 30,
         lineHeight: '30px', // `px` suffix is required for `line-height` fields to work
         buttonPadding: 0,
-        fontSize: 12,
+        fontSize: 14,
+        fontWeight: 700,
         buttonRadius: 4,
     },
 

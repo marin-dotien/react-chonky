@@ -61,7 +61,7 @@ export const FileNavbarDropdown: React.FC<FileNavbarDropdownProps> = React.memo(
                     elevation={2}
                     anchorEl={anchor}
                     anchorOrigin={{
-                        vertical: 'top',
+                        vertical: 'bottom',
                         horizontal: 'left',
                     }}
                     onClose={handleClose}
