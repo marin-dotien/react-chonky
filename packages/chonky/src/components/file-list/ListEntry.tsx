@@ -91,7 +91,9 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         alignItems: 'center',
         padding: '4px 0',
         // boxShadow: `inset ${theme.palette.divider} 0 -1px 0`,
-        borderBottom: '1px solid #CCCBC7',
+        borderBottomWidth: '1px',
+        borderBottomStyle: 'solid',
+        borderBottomColor: theme.colors.borderGray,
         fontSize: theme.listFileEntry.fontSize,
         color: ({ dndState }: StyleState) =>
             dndState.dndIsOver

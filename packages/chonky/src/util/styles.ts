@@ -13,6 +13,8 @@ export const lightTheme = {
         debugYellow: '#fae9bd',
 
         textActive: '#09f',
+
+        borderGray: 'rgb(204, 203, 199);',
     },
 
     fontSizes: {
