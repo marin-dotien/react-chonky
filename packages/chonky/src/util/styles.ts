@@ -22,6 +22,10 @@ export const lightTheme = {
         transparent: 'transparent,',
     },
 
+    text: {
+        primary: '#191919', // Primary text color
+    },
+
     fontSizes: {
         rootPrimary: 15,
     },

@@ -96,7 +96,6 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
     navbarBreadcrumbs: {
         fontSize: important(theme.toolbar.fontSize),
         flexGrow: 100,
-        color: theme.colors.black,
     },
     separator: {
         marginRight: important(4),
