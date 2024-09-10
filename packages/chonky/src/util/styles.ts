@@ -15,6 +15,7 @@ export const lightTheme = {
         textActive: '#09f',
 
         borderGray: 'rgb(204, 203, 199);',
+        transparent: 'transparent,',
     },
 
     fontSizes: {

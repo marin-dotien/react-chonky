@@ -66,6 +66,7 @@ export const ToolbarButton: React.FC<ToolbarButtonProps> = React.memo((props) =>
             onClick={onClick}
             title={tooltip ? tooltip : text}
             disabled={disabled || !onClick}
+            disableRipple
         >
             {iconComponent}
             {text && !iconOnly && <span>{text}</span>}
