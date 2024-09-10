@@ -7,7 +7,7 @@
 import React, { useContext, useMemo } from 'react';
 
 import { DndEntryState } from '../../types/file-list.types';
-import { ChonkyIconName } from '../../types/icons.types';
+// import { ChonkyIconName } from '../../types/icons.types';
 import { useDndHoverOpen, useFileDrop } from '../../util/dnd';
 import { ChonkyIconContext } from '../../util/icon-helper';
 import { c, important, makeLocalChonkyStyles } from '../../util/styles';
@@ -47,21 +47,22 @@ export const FolderChainButton: React.FC<FolderChainButtonProps> = React.memo(
             [classes.currentBreadcrumb]: current,
         });
         const text = file ? file.name : 'Loading...';
-        const icon =
-            first && file?.folderChainIcon === undefined
-                ? ChonkyIconName.folder
-                : file?.folderChainIcon;
+        // const icon =
+        //     first && file?.folderChainIcon === undefined
+        //         ? ChonkyIconName.folder
+        //         : file?.folderChainIcon;
 
         return (
             <div className={classes.buttonContainer} ref={file ? drop : null}>
                 {file && dndIconName && (
-                    // <div className={classes.dndIndicator}>
-                    //   <ChonkyIcon icon={dndIconName} fixedWidth={true} />
-                    // </div>
-                    <span>Welcome to lexi for</span>
+                    <div className={classes.dndIndicator}>
+                        <ChonkyIcon icon={dndIconName} fixedWidth={true} />
+                    </div>
                 )}
+
+                {first && <span>Welcome to Lexi for </span>}
                 <ToolbarButton
-                    icon={icon}
+                    // icon={icon}
                     className={className}
                     text={text}
                     disabled={disabled}
@@ -86,6 +87,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
             }
             return important(color);
         },
+        fontWeight: important(700),
     },
     disabledBreadcrumb: {
         // Constant function here is on purpose. Without the function, the color here
