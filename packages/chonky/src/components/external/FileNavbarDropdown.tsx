@@ -64,6 +64,9 @@ export const FileNavbarDropdown: React.FC<FileNavbarDropdownProps> = React.memo(
                         vertical: 'bottom',
                         horizontal: 'left',
                     }}
+                    sx={{
+                        boxShadow: 'none',
+                    }}
                     onClose={handleClose}
                     open={Boolean(anchor)}
                     transitionDuration={150}
