@@ -10,7 +10,7 @@ import { SmartFileEntry } from './FileEntry';
 
 export interface ColumnDefinition {
     accessor: string;
-    label?: () => React.ReactNode;
+    label?: string | (() => React.ReactNode);
     flex?: string;
     justifyContent?: 'start' | 'center' | 'end';
     render?: (value: any, row: any) => React.ReactNode;
@@ -55,23 +55,32 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
         return (
             <>
                 <div className={classes.headerRow} style={{ width }}>
-                    {columns.map((column) => (
-                        <div
-                            key={column.accessor}
-                            className={classes.headerCellProperty}
-                            style={{
-                                flex: column.flex || '10%',
-                                justifyContent: column.justifyContent || 'left',
-                                visibility:
-                                    column.accessor === 'id' &&
-                                    column.label === 'Actions'
-                                        ? 'hidden'
-                                        : 'visible',
-                            }}
-                        >
-                            {column.label}
-                        </div>
-                    ))}
+                    {columns.map((column) => {
+                        // Determine if the label is a function or a static value
+                        const labelContent =
+                            typeof column.label === 'function'
+                                ? column.label()
+                                : column.label;
+
+                        return (
+                            <div
+                                key={column.accessor}
+                                className={classes.headerCellProperty}
+                                style={{
+                                    flex: column.flex || '10%',
+                                    justifyContent: column.justifyContent || 'left',
+                                    visibility:
+                                        column.accessor === 'id' &&
+                                        typeof labelContent === 'string' &&
+                                        labelContent === 'Actions'
+                                            ? 'hidden'
+                                            : 'visible',
+                                }}
+                            >
+                                <span>{labelContent}</span>
+                            </div>
+                        );
+                    })}
                 </div>
                 <FixedSizeList
                     ref={listRef as any}

@@ -17,11 +17,21 @@ export const FullFileBrowser = React.memo(
         const { onScroll, columns } = props;
 
         const defaultColumns: ColumnDefinition[] = [
-            { accessor: 'name', label: 'Name', flex: '10%', justifyContent: 'start' },
-            { accessor: 'size', label: 'Size', flex: '10%', justifyContent: 'start' },
+            {
+                accessor: 'name',
+                label: () => 'Name',
+                flex: '10%',
+                justifyContent: 'start',
+            },
+            {
+                accessor: 'size',
+                label: () => 'Size',
+                flex: '10%',
+                justifyContent: 'start',
+            },
             {
                 accessor: 'modDate',
-                label: 'Modified',
+                label: () => 'Modified',
                 flex: '10%',
                 justifyContent: 'start',
             },
