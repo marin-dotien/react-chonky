@@ -10,7 +10,7 @@ import { SmartFileEntry } from './FileEntry';
 
 export interface ColumnDefinition {
     accessor: string;
-    label: string;
+    label?: (value: any, row: any) => React.ReactNode;
     flex?: string;
     justifyContent?: 'start' | 'center' | 'end';
     render?: (value: any, row: any) => React.ReactNode;
