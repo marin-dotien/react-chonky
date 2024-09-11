@@ -99,7 +99,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         color: () => important(theme.palette.text.disabled),
     },
     currentBreadcrumb: {
-        textDecoration: important('underline'),
+        // textDecoration: important('underline'),
     },
     dndIndicator: {
         color: (dndState: DndEntryState) =>

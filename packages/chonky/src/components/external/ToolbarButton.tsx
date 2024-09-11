@@ -68,7 +68,6 @@ export const ToolbarButton: React.FC<ToolbarButtonProps> = React.memo((props) =>
             disabled={disabled || !onClick}
             disableRipple
             sx={{
-                ml: 1,
                 '&.MuiButtonBase-root:hover': {
                     bgcolor: 'transparent',
                 },

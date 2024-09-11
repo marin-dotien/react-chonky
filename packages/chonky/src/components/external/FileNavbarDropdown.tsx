@@ -72,6 +72,9 @@ export const FileNavbarDropdown: React.FC<FileNavbarDropdownProps> = React.memo(
                         paper: {
                             sx: {
                                 boxShadow: 'none',
+                                '&.MuiButtonBase-root:hover': {
+                                    bgcolor: 'transparent',
+                                },
                             },
                         },
                     }}
