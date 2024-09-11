@@ -67,6 +67,12 @@ export const ToolbarButton: React.FC<ToolbarButtonProps> = React.memo((props) =>
             title={tooltip ? tooltip : text}
             disabled={disabled || !onClick}
             disableRipple
+            sx={{
+                ml: 1,
+                '&.MuiButtonBase-root:hover': {
+                    bgcolor: 'transparent',
+                },
+            }}
         >
             {iconComponent}
             {text && !iconOnly && <span>{text}</span>}
