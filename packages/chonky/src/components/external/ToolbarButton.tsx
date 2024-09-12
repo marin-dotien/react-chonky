@@ -166,7 +166,7 @@ export const SmartToolbarButton: React.FC<SmartToolbarButtonProps> = React.memo(
                 active={active}
                 onClick={triggerAction}
                 disabled={disabled}
-                headingButton={headingButton}
+                headingButton={headingButton ?? false}
             />
         );
     }
