@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import { DndEntryState } from '../../types/file-list.types';
 // import { ChonkyIconName } from '../../types/icons.types';
