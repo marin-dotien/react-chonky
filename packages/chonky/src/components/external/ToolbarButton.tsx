@@ -136,12 +136,12 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
 
 export interface SmartToolbarButtonProps {
     fileActionId: string;
-    headingButton: boolean;
+    headingButton?: boolean;
 }
 
 export const SmartToolbarButton: React.FC<SmartToolbarButtonProps> = React.memo(
-    (props, headingButton) => {
-        const { fileActionId } = props;
+    (props) => {
+        const { fileActionId, headingButton } = props;
 
         const action = useParamSelector(selectFileActionData, fileActionId);
         const triggerAction = useFileActionTrigger(fileActionId);
