@@ -58,10 +58,10 @@ export const ToolbarButton: React.FC<ToolbarButtonProps> = React.memo((props) =>
 
     const className = c({
         [externalClassName ?? '']: true,
+        [classes.headingButton]: headingButton,
         [classes.baseButton]: true,
         [classes.iconOnlyButton]: iconOnly,
         [classes.activeButton]: !!active,
-        [classes.headingButton]: headingButton,
     });
     return (
         <Button
