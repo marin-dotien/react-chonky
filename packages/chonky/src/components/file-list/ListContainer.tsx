@@ -7,10 +7,12 @@ import { FileViewMode } from '../../types/file-view.types';
 import { useInstanceVariable } from '../../util/hooks-helpers';
 import { makeLocalChonkyStyles } from '../../util/styles';
 import { SmartFileEntry } from './FileEntry';
+import { SmartToolbarButton } from '../external/ToolbarButton';
 
 export interface ColumnDefinition {
     accessor: string;
-    label?: string | (() => React.ReactNode);
+    label?: string;
+    actionId?: string;
     flex?: string;
     justifyContent?: 'start' | 'center' | 'end';
     render?: (value: any, row: any) => React.ReactNode;
@@ -55,32 +57,27 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
         return (
             <>
                 <div className={classes.headerRow} style={{ width }}>
-                    {columns.map((column) => {
-                        // Determine if the label is a function or a static value
-                        const labelContent =
-                            typeof column.label === 'function'
-                                ? column.label()
-                                : column.label;
+                    {columns.map((column) => (
+                        <div
+                            key={column.accessor}
+                            className={classes.headerCellProperty}
+                            style={{
+                                flex: column.flex || '10%',
+                                justifyContent: column.justifyContent || 'left',
+                                visibility:
+                                    column.accessor === 'id' &&
+                                    column.label === 'Actions'
+                                        ? 'hidden'
+                                        : 'visible',
+                            }}
+                        >
+                            {column.label}
 
-                        return (
-                            <div
-                                key={column.accessor}
-                                className={classes.headerCellProperty}
-                                style={{
-                                    flex: column.flex || '10%',
-                                    justifyContent: column.justifyContent || 'left',
-                                    visibility:
-                                        column.accessor === 'id' &&
-                                        typeof labelContent === 'string' &&
-                                        labelContent === 'Actions'
-                                            ? 'hidden'
-                                            : 'visible',
-                                }}
-                            >
-                                <span>{labelContent}</span>
-                            </div>
-                        );
-                    })}
+                            {column.actionId && (
+                                <SmartToolbarButton fileActionId={column.actionId} />
+                            )}
+                        </div>
+                    ))}
                 </div>
                 <FixedSizeList
                     ref={listRef as any}
