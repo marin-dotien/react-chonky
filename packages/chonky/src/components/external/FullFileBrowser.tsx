@@ -19,19 +19,19 @@ export const FullFileBrowser = React.memo(
         const defaultColumns: ColumnDefinition[] = [
             {
                 accessor: 'name',
-                label: () => 'Name',
+                label: 'Name',
                 flex: '10%',
                 justifyContent: 'start',
             },
             {
                 accessor: 'size',
-                label: () => 'Size',
+                label: 'Size',
                 flex: '10%',
                 justifyContent: 'start',
             },
             {
                 accessor: 'modDate',
-                label: () => 'Modified',
+                label: 'Modified',
                 flex: '10%',
                 justifyContent: 'start',
             },
