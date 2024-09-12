@@ -12,7 +12,7 @@ export enum ChonkyIconName {
     dndCanDrop = 'dndCanDrop',
     dndCannotDrop = 'dndCannotDrop',
 
-    // File Actions: File operations
+    // File Actions: File operation
     openFiles = 'openFiles',
     openParentFolder = 'openParentFolder',
     copy = 'copy',
@@ -23,8 +23,8 @@ export enum ChonkyIconName {
     clearSelection = 'clearSelection',
 
     // File Actions: Sorting & options
-    sortAsc = 'sortAsc',
-    sortDesc = 'sortDesc',
+    sortAsc = 'sortUp',
+    sortDesc = 'sortDown',
     toggleOn = 'toggleOn',
     toggleOff = 'toggleOff',
 
