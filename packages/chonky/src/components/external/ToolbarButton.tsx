@@ -27,6 +27,7 @@ export interface ToolbarButtonProps {
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     disabled?: boolean;
     dropdown?: boolean;
+    headingButton?: boolean;
 }
 
 export const ToolbarButton: React.FC<ToolbarButtonProps> = React.memo((props) => {
@@ -40,6 +41,7 @@ export const ToolbarButton: React.FC<ToolbarButtonProps> = React.memo((props) =>
         onClick,
         disabled,
         dropdown,
+        headingButton,
     } = props;
     const classes = useStyles();
     const ChonkyIcon = useContext(ChonkyIconContext);
@@ -59,6 +61,7 @@ export const ToolbarButton: React.FC<ToolbarButtonProps> = React.memo((props) =>
         [classes.baseButton]: true,
         [classes.iconOnlyButton]: iconOnly,
         [classes.activeButton]: !!active,
+        [classes.headingButton]: headingButton,
     });
     return (
         <Button
@@ -123,15 +126,21 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
     activeButton: {
         color: important(theme.colors.textActive),
     },
+
+    headingButton: {
+        height: 'auto !important',
+        width: 'auto !important',
+        lineHeight: 'auto !important',
+    },
 }));
 
 export interface SmartToolbarButtonProps {
     fileActionId: string;
-    className?: string;
+    headingButton: boolean;
 }
 
 export const SmartToolbarButton: React.FC<SmartToolbarButtonProps> = React.memo(
-    (props, className) => {
+    (props, headingButton) => {
         const { fileActionId } = props;
 
         const action = useParamSelector(selectFileActionData, fileActionId);
@@ -157,7 +166,7 @@ export const SmartToolbarButton: React.FC<SmartToolbarButtonProps> = React.memo(
                 active={active}
                 onClick={triggerAction}
                 disabled={disabled}
-                className={className}
+                headingButton={headingButton}
             />
         );
     }

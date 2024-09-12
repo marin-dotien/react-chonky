@@ -8,7 +8,6 @@ import { useInstanceVariable } from '../../util/hooks-helpers';
 import { makeLocalChonkyStyles } from '../../util/styles';
 import { SmartFileEntry } from './FileEntry';
 import { SmartToolbarButton } from '../external/ToolbarButton';
-import { lineHeight } from '@mui/system';
 
 export interface ColumnDefinition {
     accessor: string;
@@ -77,7 +76,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
                             {column.actionId && (
                                 <SmartToolbarButton
                                     fileActionId={column.actionId}
-                                    className={classes.columnHeadingClass}
+                                    headingButton={true}
                                 />
                             )}
                         </div>
@@ -129,10 +128,5 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
     row: {
         display: 'flex',
         alignItems: 'center',
-    },
-    columnHeadingClass: {
-        height: 'auto !important',
-        width: 'auto !important',
-        lineHeight: 'auto !important',
     },
 }));
