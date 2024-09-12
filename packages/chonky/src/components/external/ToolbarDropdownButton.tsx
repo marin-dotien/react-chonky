@@ -78,6 +78,12 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
     activeButton: {
         color: important(theme.colors.textActive),
     },
+
+    headingButton: {
+        height: '12px !important',
+        width: 'auto !important',
+        lineHeight: 'normal !important',
+    },
 }));
 
 export interface SmartToolbarDropdownButtonProps {

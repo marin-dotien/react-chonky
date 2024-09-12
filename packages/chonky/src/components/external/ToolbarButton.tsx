@@ -58,10 +58,10 @@ export const ToolbarButton: React.FC<ToolbarButtonProps> = React.memo((props) =>
 
     const className = c({
         [externalClassName ?? '']: true,
-        [classes.headingButton]: headingButton,
         [classes.baseButton]: true,
         [classes.iconOnlyButton]: iconOnly,
         [classes.activeButton]: !!active,
+        [classes.headingButton]: headingButton,
     });
     return (
         <Button
@@ -88,12 +88,6 @@ export const ToolbarButton: React.FC<ToolbarButtonProps> = React.memo((props) =>
 });
 
 const useStyles = makeGlobalChonkyStyles((theme) => ({
-    headingButton: {
-        height: '12px !important',
-        width: 'auto !important',
-        lineHeight: 'normal !important',
-    },
-
     baseButton: {
         fontSize: important(theme.toolbar.fontSize),
         textTransform: important('none'),
@@ -131,6 +125,12 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
 
     activeButton: {
         color: important(theme.colors.textActive),
+    },
+
+    headingButton: {
+        height: '12px !important',
+        width: 'auto !important',
+        lineHeight: 'normal !important',
     },
 }));
 
