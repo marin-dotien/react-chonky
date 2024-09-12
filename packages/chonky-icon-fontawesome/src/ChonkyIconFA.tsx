@@ -67,7 +67,7 @@ import { faUsers } from '@fortawesome/free-solid-svg-icons/faUsers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ChonkyIconName, ChonkyIconProps } from '@aperturerobotics/chonky';
 import React from 'react';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
 
 const IconMap: { [iconName in ChonkyIconName]: any } = {
     // Misc
@@ -92,8 +92,8 @@ const IconMap: { [iconName in ChonkyIconName]: any } = {
     [ChonkyIconName.clearSelection]: faEraser,
 
     // File Actions: Sorting & options
-    [ChonkyIconName.sortAsc]: faSortAmountDownAlt,
-    [ChonkyIconName.sortDesc]: faSortAmountUpAlt,
+    [ChonkyIconName.sortAsc]: faSortUp,
+    [ChonkyIconName.sortDesc]: faSortDown,
     [ChonkyIconName.toggleOn]: faToggleOn,
     [ChonkyIconName.toggleOff]: faToggleOff,
 
