@@ -52,8 +52,6 @@ import { faPaste } from '@fortawesome/free-solid-svg-icons/faPaste';
 import { faRunning } from '@fortawesome/free-solid-svg-icons/faRunning';
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons/faShareAlt';
-import { faSortAmountDownAlt } from '@fortawesome/free-solid-svg-icons/faSortAmountDownAlt';
-import { faSortAmountUpAlt } from '@fortawesome/free-solid-svg-icons/faSortAmountUpAlt';
 import { faTerminal } from '@fortawesome/free-solid-svg-icons/faTerminal';
 import { faTh } from '@fortawesome/free-solid-svg-icons/faTh';
 import { faThLarge } from '@fortawesome/free-solid-svg-icons/faThLarge';
