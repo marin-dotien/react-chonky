@@ -18,7 +18,7 @@ export const lightTheme = {
         debugPurple: '#d2bdfa',
         debugYellow: '#fae9bd',
 
-        textActive: '#09f',
+        textActive: '#011EF4',
 
         primary: '#011EF4',
         black: '#191919',
@@ -63,7 +63,7 @@ export const lightTheme = {
     },
 
     dragLayer: {
-        border: 'solid 2px #09f',
+        border: 'solid 2px #011EF4',
         padding: '7px 10px',
         borderRadius: 2,
     },
