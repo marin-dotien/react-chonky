@@ -116,13 +116,14 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
     },
     headerRow: {
         display: 'flex',
+        gap: 20,
         padding: '10px 0',
         fontSize: theme.listFileEntry.headerFontSize,
         backgroundColor: 'transparent',
     },
     headerCellProperty: {
         display: 'flex',
-        marginRight: '20px',
+        alignItems: 'center',
         textTransform: 'uppercase',
     },
     row: {
