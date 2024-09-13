@@ -90,7 +90,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         height: '100%',
         alignItems: 'center',
         gap: 20,
-        padding: '4px 0',
+        padding: 4,
         // boxShadow: `inset ${theme.palette.divider} 0 -1px 0`,
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
