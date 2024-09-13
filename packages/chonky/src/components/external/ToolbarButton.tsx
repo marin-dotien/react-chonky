@@ -131,6 +131,7 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
         height: '12px !important',
         width: 'auto !important',
         lineHeight: 'normal !important',
+        color: theme.colors.borderGray,
     },
 }));
 

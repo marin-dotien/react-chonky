@@ -54,8 +54,6 @@ export const useFileActionProps = (
         if (!action) return { icon: null, active: false, disabled: true };
 
         let icon = action.button?.icon ?? null;
-        let disabledClass = false;
-
         if (action.sortKeySelector) {
             if (sortActionId === action.id) {
                 if (sortOrder === SortOrder.ASC) {
@@ -65,7 +63,6 @@ export const useFileActionProps = (
                 }
             } else {
                 icon = ChonkyIconName.sortDesc;
-                disabledClass = true;
             }
         } else if (action.option) {
             if (optionValue) {
@@ -102,10 +99,6 @@ export const useFileActionProps = (
             disabled =
                 disabled ||
                 (!forceEnableOpenParent && !FileHelper.isOpenable(parentFolder));
-        }
-
-        if (disabledClass) {
-            disabled = true;
         }
 
         return { icon, active, disabled };
