@@ -18,76 +18,70 @@ interface StyleState {
     dndState: DndEntryState;
 }
 
-export const ListEntry: React.FC<
-    FileEntryProps & { columns: ColumnDefinition[]; displayIndex: number }
-> = React.memo(({ file, selected, focused, dndState, columns, displayIndex }) => {
-    const entryState: FileEntryState = useFileEntryState(file, selected, focused);
-    const dndIconName = useDndIcon(dndState);
+export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] }> =
+    React.memo(({ file, selected, focused, dndState, columns }) => {
+        const entryState: FileEntryState = useFileEntryState(file, selected, focused);
+        const dndIconName = useDndIcon(dndState);
 
-    const styleState = useMemo<StyleState>(
-        () => ({
-            entryState,
-            dndState,
-        }),
-        [dndState, entryState]
-    );
-    const classes = useStyles(styleState);
-    const commonClasses = useCommonEntryStyles(entryState);
-    const ChonkyIcon = useContext(ChonkyIconContext);
-    const fileEntryHtmlProps = useFileEntryHtmlProps(file);
+        const styleState = useMemo<StyleState>(
+            () => ({
+                entryState,
+                dndState,
+            }),
+            [dndState, entryState]
+        );
+        const classes = useStyles(styleState);
+        const commonClasses = useCommonEntryStyles(entryState);
+        const ChonkyIcon = useContext(ChonkyIconContext);
+        const fileEntryHtmlProps = useFileEntryHtmlProps(file);
 
-    const listEntryClass =
-        displayIndex === 0
-            ? `${classes.listFileEntry} ${classes.firstListFileEntry}`
-            : classes.listFileEntry;
+        return (
+            <div className={classes.listFileEntry} {...fileEntryHtmlProps}>
+                <div className={commonClasses.focusIndicator}></div>
+                <div className={commonClasses.selectionIndicator}></div>
 
-    return (
-        <div className={listEntryClass} {...fileEntryHtmlProps}>
-            <div className={commonClasses.focusIndicator}></div>
-            <div className={commonClasses.selectionIndicator}></div>
-
-            {columns.map((column, index) => (
-                <div
-                    key={index}
-                    className={classes.listFileEntryProperty}
-                    style={{
-                        flex: column.flex || '10%',
-                        justifyContent: column.justifyContent || 'left',
-                        overflow:
-                            column.accessor === 'id' && column.label === 'Hidden'
-                                ? 'visible'
-                                : 'hidden',
-                    }}
-                >
-                    {column.accessor === 'name' ? (
-                        <div className={classes.listFileEntryIcon}>
-                            <ChonkyIcon
-                                icon={dndIconName ?? entryState.icon}
-                                spin={dndIconName ? false : entryState.iconSpin}
-                                fixedWidth={true}
-                            />
-                        </div>
-                    ) : null}
-                    {column.render ? (
-                        column.render(file?.[column.accessor], file)
-                    ) : file?.[column.accessor] instanceof Date ? (
-                        FileHelper.parseDate(
-                            file[column.accessor]
-                        )?.toLocaleDateString() || 'N/A'
-                    ) : file?.[column.accessor] !== undefined ? (
-                        column.accessor === 'name' ? (
-                            <FileEntryName file={file} />
+                {columns.map((column, index) => (
+                    <div
+                        key={index}
+                        className={classes.listFileEntryProperty}
+                        style={{
+                            flex: column.flex || '10%',
+                            justifyContent: column.justifyContent || 'left',
+                            overflow:
+                                column.accessor === 'id' && column.label === 'Hidden'
+                                    ? 'visible'
+                                    : 'hidden',
+                        }}
+                    >
+                        {column.accessor === 'name' ? (
+                            <div className={classes.listFileEntryIcon}>
+                                <ChonkyIcon
+                                    icon={dndIconName ?? entryState.icon}
+                                    spin={dndIconName ? false : entryState.iconSpin}
+                                    fixedWidth={true}
+                                />
+                            </div>
+                        ) : null}
+                        {column.render ? (
+                            column.render(file?.[column.accessor], file)
+                        ) : file?.[column.accessor] instanceof Date ? (
+                            FileHelper.parseDate(
+                                file[column.accessor]
+                            )?.toLocaleDateString() || 'N/A'
+                        ) : file?.[column.accessor] !== undefined ? (
+                            column.accessor === 'name' ? (
+                                <FileEntryName file={file} />
+                            ) : (
+                                file[column.accessor]
+                            )
                         ) : (
-                            file[column.accessor]
-                        )
-                    ) : (
-                        <TextPlaceholder minLength={5} maxLength={15} />
-                    )}
-                </div>
-            ))}
-        </div>
-    );
-});
+                            <TextPlaceholder minLength={5} maxLength={15} />
+                        )}
+                    </div>
+                ))}
+            </div>
+        );
+    });
 
 const useStyles = makeLocalChonkyStyles((theme) => ({
     listFileEntry: {
