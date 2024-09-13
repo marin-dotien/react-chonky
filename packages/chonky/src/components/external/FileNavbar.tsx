@@ -6,7 +6,7 @@
 
 import Box from '@mui/material/Box';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
-import React, { ReactElement, useEffect, useMemo } from 'react';
+import React, { ReactElement, useMemo } from 'react';
 
 // import { ChonkyActions } from '../../action-definitions/index';
 import { important, makeGlobalChonkyStyles } from '../../util/styles';
