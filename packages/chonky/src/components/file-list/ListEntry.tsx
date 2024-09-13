@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo, useRef } from 'react';
 import { DndEntryState, FileEntryProps } from '../../types/file-list.types';
 import { ChonkyIconContext } from '../../util/icon-helper';
 import { makeLocalChonkyStyles } from '../../util/styles';
@@ -35,8 +35,22 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
         const ChonkyIcon = useContext(ChonkyIconContext);
         const fileEntryHtmlProps = useFileEntryHtmlProps(file);
 
+        const entryRef = useRef<HTMLDivElement | null>(null);
+
+        useEffect(() => {
+            if (
+                entryRef.current?.parentElement?.firstElementChild === entryRef.current
+            ) {
+                entryRef.current?.classList.add(classes.firstListFileEntry);
+            }
+        }, [entryRef, classes]);
+
         return (
-            <div className={classes.listFileEntry} {...fileEntryHtmlProps}>
+            <div
+                ref={entryRef}
+                className={classes.listFileEntry}
+                {...fileEntryHtmlProps}
+            >
                 <div className={commonClasses.focusIndicator}></div>
                 <div className={commonClasses.selectionIndicator}></div>
 
