@@ -25,10 +25,6 @@ export const FileNavbar: React.FC<FileNavbarProps> = React.memo(() => {
 
     const navbarItems = useSelector(selectNavbarItems);
 
-    useEffect(() => {
-        console.log('Navbar Items:', navbarItems);
-    }, [navbarItems]);
-
     const navbarItemComponents = useMemo(() => {
         const components: ReactElement[] = [];
         for (let i = 0; i < navbarItems.length; ++i) {

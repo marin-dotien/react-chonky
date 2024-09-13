@@ -80,7 +80,10 @@ export const FolderChainButton: React.FC<FolderChainButtonProps> = React.memo(
 const useStyles = makeLocalChonkyStyles((theme) => ({
     buttonContainer: {
         position: 'relative',
+        display: 'flex',
+        alignItems: 'center',
     },
+
     baseBreadcrumb: {
         color: (dndState: DndEntryState) => {
             let color = theme.palette.text.primary;
@@ -93,14 +96,17 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         },
         fontWeight: important(700),
     },
+
     disabledBreadcrumb: {
         // Constant function here is on purpose. Without the function, the color here
         // does not override the `baseBreadcrumb` color from above.
         color: () => important(theme.palette.text.disabled),
     },
+
     currentBreadcrumb: {
         // textDecoration: important('underline'),
     },
+
     dndIndicator: {
         color: (dndState: DndEntryState) =>
             dndState.dndCanDrop ? theme.dnd.canDropColor : theme.dnd.cannotDropColor,
@@ -120,6 +126,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
     },
 
     breadcrumbsIntroText: {
+        marginRight: 4,
         color: theme.colors.black,
     },
 }));
