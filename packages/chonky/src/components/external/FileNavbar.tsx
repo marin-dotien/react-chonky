@@ -49,7 +49,6 @@ export const FileNavbar: React.FC<FileNavbarProps> = React.memo(() => {
             const component = (
                 <FolderChainButton
                     key={key}
-                    first={i === 0}
                     current={i === folderChainItems.length - 1}
                     item={folderChainItems[i]}
                 />
@@ -63,6 +62,11 @@ export const FileNavbar: React.FC<FileNavbarProps> = React.memo(() => {
         <Box className={classes.navbarWrapper}>
             <Box className={classes.navbarContainer}>
                 {/* <SmartToolbarButton fileActionId={ChonkyActions.OpenParentFolder.id} /> */}
+                {folderChainItems.length === 1 && (
+                    <span className={classes.breadcrumbsIntroText}>
+                        Welcome to Lexi for{' '}
+                    </span>
+                )}
                 <Breadcrumbs
                     className={classes.navbarBreadcrumbs}
                     classes={{ separator: classes.separator }}

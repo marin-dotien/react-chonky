@@ -16,13 +16,12 @@ import { FolderChainItem } from './FileNavbar-hooks';
 import { ToolbarButton } from './ToolbarButton';
 
 export interface FolderChainButtonProps {
-    first: boolean;
     current: boolean;
     item: FolderChainItem;
 }
 
 export const FolderChainButton: React.FC<FolderChainButtonProps> = React.memo(
-    ({ first, current, item }) => {
+    ({ current, item }) => {
         const { file, disabled, onClick } = item;
         const { dndIsOver, dndCanDrop, drop } = useFileDrop({
             file,
@@ -60,11 +59,6 @@ export const FolderChainButton: React.FC<FolderChainButtonProps> = React.memo(
                     </div>
                 )} */}
 
-                {first && (
-                    <span className={classes.breadcrumbsIntroText}>
-                        Welcome to Lexi for{' '}
-                    </span>
-                )}
                 <ToolbarButton
                     // icon={icon}
                     className={className}
