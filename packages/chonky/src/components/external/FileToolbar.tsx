@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode, useEffect, useMemo } from 'react';
+import React, { ReactElement, ReactNode, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectToolbarItems, selectHideToolbarInfo } from '../../redux/selectors';
