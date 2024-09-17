@@ -62,15 +62,15 @@ export const FileNavbar: React.FC<FileNavbarProps> = React.memo(() => {
         <Box className={classes.navbarWrapper}>
             <Box className={classes.navbarContainer}>
                 {/* <SmartToolbarButton fileActionId={ChonkyActions.OpenParentFolder.id} /> */}
-                {folderChainItems.length === 1 && (
-                    <span className={classes.breadcrumbsIntroText}>
-                        Welcome to Lexi for{' '}
-                    </span>
-                )}
                 <Breadcrumbs
                     className={classes.navbarBreadcrumbs}
                     classes={{ separator: classes.separator }}
                 >
+                    {folderChainItems.length === 1 && (
+                        <span className={classes.breadcrumbsIntroText}>
+                            Welcome to Lexi for{' '}
+                        </span>
+                    )}
                     {folderChainComponents}
                 </Breadcrumbs>
 
@@ -94,6 +94,8 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
         padding: important(0),
     },
     navbarBreadcrumbs: {
+        display: 'flex',
+        alignItems: 'center',
         fontSize: important(theme.toolbar.fontSize),
         flexGrow: 100,
         fontWeight: important(700),
