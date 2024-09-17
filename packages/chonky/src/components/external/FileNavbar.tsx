@@ -65,7 +65,6 @@ export const FileNavbar: React.FC<FileNavbarProps> = React.memo(() => {
                 <Breadcrumbs
                     className={classes.navbarBreadcrumbs}
                     classes={{ separator: classes.separator }}
-                    separator=""
                 >
                     {folderChainItems.length === 1 && (
                         <span className={classes.breadcrumbsIntroText}>
