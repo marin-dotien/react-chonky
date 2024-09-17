@@ -103,7 +103,7 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
         fontSize: important(theme.toolbar.fontSize),
         flexGrow: 100,
         fontWeight: important(700),
-        color: theme.colors.black,
+        color: important(theme.colors.black),
     },
 
     separator: {
