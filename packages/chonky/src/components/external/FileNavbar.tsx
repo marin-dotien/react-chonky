@@ -109,4 +109,8 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
         marginRight: important(4),
         marginLeft: important(4),
     },
+
+    breadcrumbsIntroText: {
+        marginRight: 4,
+    },
 }));
