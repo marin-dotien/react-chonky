@@ -65,10 +65,11 @@ export const FileNavbar: React.FC<FileNavbarProps> = React.memo(() => {
                 <Breadcrumbs
                     className={classes.navbarBreadcrumbs}
                     classes={{ separator: classes.separator }}
+                    separator=""
                 >
                     {folderChainItems.length === 1 && (
                         <span className={classes.breadcrumbsIntroText}>
-                            Welcome to Lexi for{' '}
+                            Welcome to Lexi for
                         </span>
                     )}
                     {folderChainComponents}
@@ -84,22 +85,27 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
     navbarWrapper: {
         paddingBottom: theme.margins.rootLayoutMargin,
     },
+
     navbarContainer: {
         display: 'flex',
     },
+
     upDirectoryButton: {
         fontSize: important(theme.toolbar.fontSize),
         height: theme.toolbar.size,
         width: theme.toolbar.size,
         padding: important(0),
     },
+
     navbarBreadcrumbs: {
         display: 'flex',
         alignItems: 'center',
         fontSize: important(theme.toolbar.fontSize),
         flexGrow: 100,
         fontWeight: important(700),
+        color: theme.colors.black,
     },
+
     separator: {
         marginRight: important(4),
         marginLeft: important(4),

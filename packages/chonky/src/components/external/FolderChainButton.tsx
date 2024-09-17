@@ -118,9 +118,4 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         top: '50%',
         zIndex: 5,
     },
-
-    breadcrumbsIntroText: {
-        marginRight: 4,
-        color: theme.colors.black,
-    },
 }));
