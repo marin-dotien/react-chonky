@@ -16,10 +16,6 @@ export const FileToolbar: React.FC<FileToolbarProps & { children?: ReactNode }> 
         const classes = useStyles();
         const toolbarItems = useSelector(selectToolbarItems);
 
-        useEffect(() => {
-            console.log('Toolbar Items:', toolbarItems);
-        }, [toolbarItems]);
-
         const toolbarItemComponents = useMemo(() => {
             const components: ReactElement[] = [];
             for (let i = 0; i < toolbarItems.length; ++i) {
