@@ -45,10 +45,11 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
                         key={index}
                         className={classes.listFileEntryProperty}
                         style={{
-                            flex: column.flex || '10%',
+                            flex: column.flex || '0 1 10%',
                             justifyContent: column.justifyContent || 'left',
+                            marginLeft: column.label === 'Options' ? 'auto' : '',
                             overflow:
-                                column.accessor === 'id' && column.label === 'Hidden'
+                                column.accessor === 'id' && column.label === 'Options'
                                     ? 'visible'
                                     : 'hidden',
                         }}

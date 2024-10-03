@@ -20,19 +20,19 @@ export const FullFileBrowser = React.memo(
             {
                 accessor: 'name',
                 label: 'Name',
-                flex: '10%',
+                flex: '0 1 10%',
                 justifyContent: 'start',
             },
             {
                 accessor: 'size',
                 label: 'Size',
-                flex: '10%',
+                flex: '0 1 10%',
                 justifyContent: 'start',
             },
             {
                 accessor: 'modDate',
                 label: 'Modified',
-                flex: '10%',
+                flex: '0 1 10%',
                 justifyContent: 'start',
             },
         ];

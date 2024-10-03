@@ -62,7 +62,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
                             key={column.accessor}
                             className={classes.headerCellProperty}
                             style={{
-                                flex: column.flex || '10%',
+                                flex: column.flex || '0 1 10%',
                                 justifyContent: column.justifyContent || 'left',
                                 visibility:
                                     column.accessor === 'id' &&

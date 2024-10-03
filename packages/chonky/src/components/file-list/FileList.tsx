@@ -48,12 +48,12 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
     const { onScroll, columns } = props;
 
     const defaultColumns: ColumnDefinition[] = [
-        { accessor: 'name', label: 'Name', flex: '20%', justifyContent: 'start' },
-        { accessor: 'size', label: 'Size', flex: '10%', justifyContent: 'start' },
+        { accessor: 'name', label: 'Name', flex: '0 1 20%', justifyContent: 'start' },
+        { accessor: 'size', label: 'Size', flex: '0 1 10%', justifyContent: 'start' },
         {
             accessor: 'modDate',
             label: 'Last Modified',
-            flex: '10%',
+            flex: '0 1 10%',
             justifyContent: 'end',
         },
     ];
