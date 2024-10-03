@@ -70,7 +70,7 @@ export const ExtraActions = {
             name: 'Delete files',
             toolbar: true,
             navbar: false,
-            contextMenu: false,
+            contextMenu: true,
             group: 'Actions',
             icon: ChonkyIconName.trash,
         },
