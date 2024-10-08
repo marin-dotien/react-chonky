@@ -16,11 +16,13 @@ import { SmartToolbarButton } from './ToolbarButton';
 import { useSelector } from 'react-redux';
 import { selectNavbarItems } from '../../redux/selectors';
 import { FileNavbarDropdown } from './FileNavbarDropdown';
+import { useIntl } from 'react-intl';
 
 export interface FileNavbarProps {}
 
 export const FileNavbar: React.FC<FileNavbarProps> = React.memo(() => {
     const classes = useStyles();
+    const intl = useIntl();
     const folderChainItems = useFolderChainItems();
 
     const navbarItems = useSelector(selectNavbarItems);
@@ -64,7 +66,10 @@ export const FileNavbar: React.FC<FileNavbarProps> = React.memo(() => {
                 {/* <SmartToolbarButton fileActionId={ChonkyActions.OpenParentFolder.id} /> */}
                 {folderChainItems.length === 1 && (
                     <span className={classes.breadcrumbsIntroText}>
-                        Welcome to Lexi for
+                        {intl.formatMessage({
+                            id: 'file_explorer.breadcrumbs.intro_text',
+                            defaultMessage: 'Welcome to Lexi',
+                        })}
                     </span>
                 )}
                 <Breadcrumbs
