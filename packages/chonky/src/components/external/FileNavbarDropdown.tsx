@@ -88,7 +88,7 @@ export const FileNavbarDropdown: React.FC<FileNavbarDropdownProps> = React.memo(
 
 const useStyles = makeGlobalChonkyStyles((theme) => ({
     dropdownList: {
-        padding: important(10),
+        padding: important(0),
         borderRadius: '5px',
         borderWidth: '1px',
         borderStyle: 'solid',
