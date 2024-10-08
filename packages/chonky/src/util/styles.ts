@@ -45,7 +45,7 @@ export const lightTheme = {
     toolbar: {
         size: 30,
         lineHeight: '30px', // `px` suffix is required for `line-height` fields to work
-        buttonPadding: 0,
+        buttonPadding: 10,
         fontSize: 14,
         fontWeight: 700,
         buttonRadius: 4,
