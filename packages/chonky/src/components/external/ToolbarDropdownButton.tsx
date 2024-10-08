@@ -45,7 +45,7 @@ export const ToolbarDropdownButton = React.forwardRef(
                 disabled={disabled}
                 disableRipple
                 sx={{
-                    padding: 10,
+                    padding: '10px',
                 }}
             >
                 {icon && (
