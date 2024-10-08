@@ -79,6 +79,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
     },
 
     baseBreadcrumb: {
+        padding: '0px !important',
         color: (dndState: DndEntryState) => {
             let color = theme.palette.text.primary;
             if (dndState.dndIsOver) {
