@@ -67,7 +67,7 @@ export const FileNavbar: React.FC<FileNavbarProps> = React.memo(() => {
                 {folderChainItems.length === 1 && (
                     <span className={classes.breadcrumbsIntroText}>
                         {intl.formatMessage({
-                            id: 'file_explorer.breadcrumbs.intro_text',
+                            id: 'chonky.breadcrumbs.intro_text',
                             defaultMessage: 'Welcome to Lexi',
                         })}
                     </span>
