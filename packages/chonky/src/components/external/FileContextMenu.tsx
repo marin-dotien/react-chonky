@@ -90,6 +90,16 @@ export const FileContextMenu: React.FC<FileContextMenuProps> = React.memo(() => 
             anchorPosition={anchorPosition}
             anchorReference="anchorPosition"
             classes={{ list: classes.contextMenuList }}
+            slotProps={{
+                paper: {
+                    sx: {
+                        boxShadow: 'none',
+                        '&.MuiButtonBase-root:hover': {
+                            bgcolor: 'transparent',
+                        },
+                    },
+                },
+            }}
         >
             {contextMenuItemComponents}
             <ListSubheader component="div" className={classes.browserMenuTooltip}>
@@ -99,9 +109,13 @@ export const FileContextMenu: React.FC<FileContextMenuProps> = React.memo(() => 
     );
 });
 
-const useStyles = makeGlobalChonkyStyles(() => ({
+const useStyles = makeGlobalChonkyStyles((theme) => ({
     contextMenuList: {
         padding: important(0),
+        borderRadius: '5px',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: theme.colors.borderGray,
     },
     browserMenuTooltip: {
         lineHeight: important('30px'),
