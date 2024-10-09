@@ -120,5 +120,6 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
     browserMenuTooltip: {
         lineHeight: important('30px'),
         fontSize: important('0.7em'),
+        borderRadius: '5px',
     },
 }));
