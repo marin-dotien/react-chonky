@@ -1,8 +1,7 @@
 import React, { useContext, useMemo } from 'react';
 import { DndEntryState, FileEntryProps } from '../../types/file-list.types';
-import { useLocalizedFileEntryStrings } from '../../util/i18n';
 import { ChonkyIconContext } from '../../util/icon-helper';
-import { c, makeLocalChonkyStyles } from '../../util/styles';
+import { makeLocalChonkyStyles } from '../../util/styles';
 import { TextPlaceholder } from '../external/TextPlaceholder';
 import {
     useDndIcon,
@@ -11,18 +10,19 @@ import {
 } from './FileEntry-hooks';
 import { FileEntryName } from './FileEntryName';
 import { FileEntryState, useCommonEntryStyles } from './GridEntryPreview';
+import { ColumnDefinition } from './ListContainer';
+import { FileHelper } from '../../util/file-helper';
 
 interface StyleState {
     entryState: FileEntryState;
     dndState: DndEntryState;
 }
 
-export const ListEntry: React.FC<FileEntryProps> = React.memo(
-    ({ file, selected, focused, dndState }) => {
+export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] }> =
+    React.memo(({ file, selected, focused, dndState, columns }) => {
         const entryState: FileEntryState = useFileEntryState(file, selected, focused);
         const dndIconName = useDndIcon(dndState);
 
-        const { fileModDateString } = useLocalizedFileEntryStrings(file);
         const styleState = useMemo<StyleState>(
             () => ({
                 entryState,
@@ -35,84 +35,54 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
         const ChonkyIcon = useContext(ChonkyIconContext);
         const fileEntryHtmlProps = useFileEntryHtmlProps(file);
 
-        const isFolder = file?.isDir;
-
         return (
             <div className={classes.listFileEntry} {...fileEntryHtmlProps}>
                 <div className={commonClasses.focusIndicator}></div>
-                <div
-                    className={c([
-                        commonClasses.selectionIndicator,
-                        classes.listFileEntrySelection,
-                    ])}
-                ></div>
+                <div className={commonClasses.selectionIndicator}></div>
 
-                <div className={classes.listFileName}>
-                    <div className={classes.listFileEntryIcon}>
-                        <ChonkyIcon
-                            icon={dndIconName ?? entryState.icon}
-                            spin={dndIconName ? false : entryState.iconSpin}
-                            fixedWidth={true}
-                        />
-                    </div>
+                {columns.map((column, index) => (
                     <div
-                        className={classes.listFileEntryName}
-                        title={file ? file.name : undefined}
+                        key={index}
+                        className={classes.listFileEntryProperty}
+                        style={{
+                            flex: column.flex || '0 1 10%',
+                            justifyContent: column.justifyContent || 'left',
+                            marginLeft: column.label === 'Options' ? 'auto' : '',
+                            overflow:
+                                column.accessor === 'id' && column.label === 'Options'
+                                    ? 'visible'
+                                    : 'hidden',
+                        }}
                     >
-                        <FileEntryName file={file} />
+                        {column.accessor === 'name' ? (
+                            <div className={classes.listFileEntryIcon}>
+                                <ChonkyIcon
+                                    icon={dndIconName ?? entryState.icon}
+                                    spin={dndIconName ? false : entryState.iconSpin}
+                                    fixedWidth={true}
+                                />
+                            </div>
+                        ) : null}
+                        {column.render ? (
+                            column.render(file?.[column.accessor], file)
+                        ) : file?.[column.accessor] instanceof Date ? (
+                            FileHelper.parseDate(
+                                file[column.accessor]
+                            )?.toLocaleDateString() || 'N/A'
+                        ) : file?.[column.accessor] !== undefined ? (
+                            column.accessor === 'name' ? (
+                                <FileEntryName file={file} />
+                            ) : (
+                                file[column.accessor]
+                            )
+                        ) : (
+                            <TextPlaceholder minLength={5} maxLength={15} />
+                        )}
                     </div>
-                </div>
-
-                <div className={classes.listFileEntryProperty}>
-                    {file ? (
-                        file.parentId ?? <span>—</span>
-                    ) : (
-                        <TextPlaceholder minLength={10} maxLength={20} />
-                    )}
-                </div>
-
-                <div className={classes.listFileEntryProperty}>
-                    {file ? (
-                        fileModDateString ?? <span>—</span>
-                    ) : (
-                        <TextPlaceholder minLength={5} maxLength={15} />
-                    )}
-                </div>
-
-                <div className={classes.listFileEntryProperty}>
-                    {file ? (
-                        file?.author ?? <span>—</span>
-                    ) : (
-                        <TextPlaceholder minLength={5} maxLength={15} />
-                    )}
-                </div>
-
-                <div className={classes.listFileEntryProperty}>
-                    {!isFolder ? (
-                        file?.deadline ?? <span>—</span>
-                    ) : (
-                        <span className={classes.invisibleSpan}>-</span>
-                    )}
-                </div>
-
-                <div
-                    className={classes.listFileEntryProperty}
-                    style={{ justifyContent: 'flex-end' }}
-                >
-                    {!isFolder ? (
-                        file?.status ?? <span>—</span>
-                    ) : (
-                        <span className={classes.invisibleSpan}>-</span>
-                    )}
-                </div>
-
-                <div className={classes.listFileEntryOption}>
-                    <button>...</button>
-                </div>
+                ))}
             </div>
         );
-    }
-);
+    });
 
 const useStyles = makeLocalChonkyStyles((theme) => ({
     listFileEntry: {
@@ -120,8 +90,12 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
         display: 'flex',
         height: '100%',
         alignItems: 'center',
+        gap: 20,
         padding: 4,
-        boxShadow: `inset ${theme.palette.divider} 0 -1px 0`,
+        // boxShadow: `inset ${theme.palette.divider} 0 -1px 0`,
+        borderBottomWidth: 1,
+        borderBottomStyle: 'solid',
+        borderBottomColor: theme.colors.borderGray,
         fontSize: theme.listFileEntry.fontSize,
         color: ({ dndState }: StyleState) =>
             dndState.dndIsOver
@@ -130,15 +104,7 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
                     : theme.dnd.cannotDropColor
                 : 'inherit',
     },
-    listFileEntrySelection: {
-        opacity: 0.6,
-    },
-    listFileName: {
-        zIndex: 20,
-        display: 'flex',
-        flex: '0 1 20%',
-        marginRight: '20px',
-    },
+
     listFileEntryIcon: {
         color: ({ entryState, dndState }: StyleState) =>
             dndState.dndIsOver
@@ -148,32 +114,18 @@ const useStyles = makeLocalChonkyStyles((theme) => ({
                 : entryState.color,
         fontSize: theme.listFileEntry.iconFontSize,
         boxSizing: 'border-box',
+        marginRight: '10px',
     },
-    listFileEntryName: {
-        overflow: 'hidden',
-        paddingLeft: 8,
-        textOverflow: 'ellipsis',
-        boxSizing: 'border-box',
-        whiteSpace: 'nowrap',
-    },
+
     listFileEntryProperty: {
         zIndex: 20,
+        position: 'relative',
         overflow: 'hidden',
         display: 'flex',
-        flex: '0 1 15%',
-        marginRight: '20px',
+        height: '100%',
+        alignItems: 'center',
         fontSize: theme.listFileEntry.propertyFontSize,
         boxSizing: 'border-box',
         whiteSpace: 'nowrap',
     },
-    listFileEntryOption: {
-        flex: '0 1 5%',
-        textAlign: 'center',
-    },
-    invisibleSpan: {
-        visibility: 'hidden',
-        display: 'inline-block',
-        width: '100%',
-    },
-    // ..
 }));

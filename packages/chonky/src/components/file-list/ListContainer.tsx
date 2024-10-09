@@ -1,9 +1,3 @@
-/**
- * @author Timur Kuzhagaliyev <tim.kuzh@gmail.com>
- * @copyright 2020
- * @license MIT
- */
-
 import React, { CSSProperties, useCallback, useMemo, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { FixedSizeList } from 'react-window';
@@ -13,14 +7,25 @@ import { FileViewMode } from '../../types/file-view.types';
 import { useInstanceVariable } from '../../util/hooks-helpers';
 import { makeLocalChonkyStyles } from '../../util/styles';
 import { SmartFileEntry } from './FileEntry';
+import { SmartToolbarButton } from '../external/ToolbarButton';
+
+export interface ColumnDefinition {
+    accessor: string;
+    label?: string;
+    actionId?: string;
+    flex?: string;
+    justifyContent?: 'start' | 'center' | 'end';
+    render?: (value: any, row: any) => React.ReactNode;
+}
 
 export interface FileListListProps {
     width: number;
     height: number;
+    columns: ColumnDefinition[];
 }
 
 export const ListContainer: React.FC<FileListListProps> = React.memo((props) => {
-    const { width, height } = props;
+    const { width, height, columns } = props;
 
     const viewConfig = useSelector(selectFileViewConfig);
 
@@ -43,6 +48,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
                         fileId={displayFileIds[data.index] ?? null}
                         displayIndex={data.index}
                         fileViewMode={FileViewMode.List}
+                        columns={columns}
                     />
                 </div>
             );
@@ -51,18 +57,31 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
         return (
             <>
                 <div className={classes.headerRow} style={{ width }}>
-                    <div className={classes.headerCellName}>Naziv</div>
-                    <div className={classes.headerCellProperty}>Folder</div>
-                    <div className={classes.headerCellProperty}>Uređivano</div>
-                    <div className={classes.headerCellProperty}>Autor</div>
-                    <div className={classes.headerCellProperty}>Rok</div>
-                    <div
-                        className={classes.headerCellProperty}
-                        style={{ textAlign: 'right' }}
-                    >
-                        Status
-                    </div>
-                    <div className={classes.headerCellOptions}>Options</div>
+                    {columns.map((column) => (
+                        <div
+                            key={column.accessor}
+                            className={classes.headerCellProperty}
+                            style={{
+                                flex: column.flex || '0 1 10%',
+                                justifyContent: column.justifyContent || 'left',
+                                marginLeft: column.label === 'Options' ? 'auto' : '',
+                                visibility:
+                                    column.accessor === 'id' &&
+                                    column.label === 'Options'
+                                        ? 'hidden'
+                                        : 'visible',
+                            }}
+                        >
+                            {column.label}
+
+                            {column.actionId && (
+                                <SmartToolbarButton
+                                    fileActionId={column.actionId}
+                                    headingButton={true}
+                                />
+                            )}
+                        </div>
+                    ))}
                 </div>
                 <FixedSizeList
                     ref={listRef as any}
@@ -85,6 +104,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
         displayFileIds,
         width,
         getItemKey,
+        columns,
     ]);
 
     return listComponent;
@@ -92,29 +112,20 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
 
 const useStyles = makeLocalChonkyStyles((theme) => ({
     listContainer: {
-        borderTop: `solid 1px ${theme.palette.divider}`,
+        height: 'auto !important',
+        // borderTop: `solid 1px ${theme.palette.divider}`,
     },
     headerRow: {
         display: 'flex',
-        padding: '10px 0',
+        gap: 20,
+        padding: '10px 4px',
         fontSize: theme.listFileEntry.headerFontSize,
         backgroundColor: 'transparent',
     },
-    headerCellName: {
-        flex: '0 1 20%', // Matches the name cell size in ListEntry
-        marginRight: '20px',
-        textTransform: 'uppercase',
-        textAlign: 'left',
-    },
     headerCellProperty: {
-        flex: '0 1 15%', // Matches the property cells in ListEntry
-        marginRight: '20px',
+        display: 'flex',
+        alignItems: 'center',
         textTransform: 'uppercase',
-        textAlign: 'left',
-    },
-    headerCellOptions: {
-        flex: '0 1 5%',
-        opacity: '0',
     },
     row: {
         display: 'flex',

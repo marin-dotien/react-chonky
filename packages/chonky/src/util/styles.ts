@@ -5,6 +5,12 @@ import { createUseStyles } from 'react-jss';
 import { DeepPartial } from 'tsdef';
 
 export const lightTheme = {
+    palette: {
+        text: {
+            primary: '#191919',
+        },
+    },
+
     colors: {
         debugRed: '#fabdbd',
         debugBlue: '#bdd8fa',
@@ -12,7 +18,14 @@ export const lightTheme = {
         debugPurple: '#d2bdfa',
         debugYellow: '#fae9bd',
 
-        textActive: '#09f',
+        textActive: '#011EF4',
+
+        primary: '#011EF4',
+        black: '#191919',
+        white: '#FFFFFF',
+
+        borderGray: '#DEDEDE',
+        transparent: 'transparent,',
     },
 
     fontSizes: {
@@ -32,8 +45,9 @@ export const lightTheme = {
     toolbar: {
         size: 30,
         lineHeight: '30px', // `px` suffix is required for `line-height` fields to work
-        buttonPadding: 8,
-        fontSize: 15,
+        buttonPadding: 10,
+        fontSize: 14,
+        fontWeight: 700,
         buttonRadius: 4,
     },
 
@@ -49,7 +63,7 @@ export const lightTheme = {
     },
 
     dragLayer: {
-        border: 'solid 2px #09f',
+        border: 'solid 2px #011EF4',
         padding: '7px 10px',
         borderRadius: 2,
     },

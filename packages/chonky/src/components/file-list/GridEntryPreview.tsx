@@ -220,27 +220,29 @@ const useFileStyles = makeLocalChonkyStyles((theme) => ({
 
 export const useCommonEntryStyles = makeLocalChonkyStyles(() => ({
     selectionIndicator: {
-        display: (state: FileEntryState) => (state.selected ? 'block' : 'none'),
-        background:
-            'repeating-linear-gradient(' +
-            '45deg,' +
-            'rgba(0,153,255,.14),' +
-            'rgba(0,153,255,.14) 10px,' +
-            'rgba(0,153,255,.25) 0,' +
-            'rgba(0,153,255,.25) 20px' +
-            ')',
-        backgroundColor: 'rgba(0, 153, 255, .14)',
-        position: 'absolute',
-        height: '100%',
-        width: '100%',
         zIndex: 10,
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        right: '0',
+        bottom: '0',
+        display: (state: FileEntryState) => (state.selected ? 'block' : 'none'),
+        background: '#FFFFFF',
+        borderRadius: '5px',
+        border: '1px solid #CCCBC7',
+        boxShadow: '1px 1px 1px 5px #F9F7F2',
     },
     focusIndicator: {
-        display: (state: FileEntryState) => (state.focused ? 'block' : 'none'),
-        boxShadow: 'inset rgba(0, 0, 0, 1) 0 0 0 2px',
-        position: 'absolute',
-        height: '100%',
-        width: '100%',
         zIndex: 11,
+        position: 'absolute',
+        top: '0px',
+        left: '0',
+        right: '0',
+        bottom: '0',
+        display: (state: FileEntryState) => (state.focused ? 'block' : 'none'),
+        background: '#FFFFFF',
+        border: '1px solid #CCCBC7',
+        borderRadius: '5px',
+        boxShadow: '1px 1px 1px 5px #F9F7F2',
     },
 }));
