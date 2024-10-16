@@ -241,7 +241,7 @@ export const useCommonEntryStyles = makeLocalChonkyStyles(() => ({
         bottom: '0',
         display: (state: FileEntryState) => (state.focused ? 'block' : 'none'),
         background: '#FFFFFF',
-        border: '1px solid #CCCBC7',
+        border: '1px solid #011EF4',
         borderRadius: '5px',
         boxShadow: '1px 1px 1px 5px #F9F7F2',
     },
