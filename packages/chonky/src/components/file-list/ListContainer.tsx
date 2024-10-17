@@ -19,8 +19,8 @@ export interface ColumnDefinition {
 }
 
 export interface FileListListProps {
-    width?: number;
-    height?: number;
+    width: number;
+    height: number;
     columns: ColumnDefinition[];
 }
 
@@ -87,9 +87,9 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
                     ref={listRef as any}
                     className={classes.listContainer}
                     itemSize={viewConfig.entryHeight}
-                    height={height ? height : '100%'}
+                    height={height}
                     itemCount={displayFileIds.length}
-                    width={width ? width : '100%'}
+                    width={width}
                     itemKey={getItemKey}
                 >
                     {rowRenderer}
