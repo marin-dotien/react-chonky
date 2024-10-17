@@ -14,7 +14,7 @@ import { makeGlobalChonkyStyles } from '../../util/styles';
 
 export interface FileListEmptyProps {
     width: number;
-    height: number | string;
+    height: number;
 }
 
 export const FileListEmpty: React.FC<FileListEmptyProps> = (props) => {

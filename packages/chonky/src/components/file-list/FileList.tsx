@@ -66,12 +66,12 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
     const listRenderer = useCallback(
         ({ width, height }: { width: number; height: number }) => {
             if (displayFileIds.length === 0) {
-                return <FileListEmpty width={width} height={'100%'} />;
+                return <FileListEmpty width={width} height={viewConfig.entryHeight} />;
             } else if (viewConfig.mode === FileViewMode.List) {
                 return (
                     <ListContainer
                         width={width}
-                        height={'100%'}
+                        height={height}
                         columns={columns || defaultColumns}
                     />
                 );
