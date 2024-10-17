@@ -83,7 +83,6 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
             ref={drop}
             className={c([classes.fileListWrapper, localClasses.fileListWrapper])}
             role="list"
-            style={{ height: '100%' }}
         >
             <div className={localClasses.dndDropZone}>
                 <div className={localClasses.dndDropZoneIcon}>
