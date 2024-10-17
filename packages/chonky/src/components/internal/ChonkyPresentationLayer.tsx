@@ -95,7 +95,8 @@ const useStyles = makeGlobalChonkyStyles((theme) => ({
         textAlign: 'left',
         borderRadius: theme.root.borderRadius,
         display: 'flex',
-        height: theme.root.height,
+        // height: theme.root.height,
+        height: 'fit-content',
 
         // Disabling select
         webkitTouchCallout: 'none',
