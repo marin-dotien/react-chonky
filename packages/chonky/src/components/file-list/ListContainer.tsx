@@ -20,7 +20,7 @@ export interface ColumnDefinition {
 
 export interface FileListListProps {
     width: number;
-    height: number;
+    height: number | string;
     columns: ColumnDefinition[];
 }
 
