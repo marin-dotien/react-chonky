@@ -101,7 +101,12 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
                     />
                 </div>
             </div>
-            <AutoSizer disableHeight={!fillParentContainer}>{listRenderer}</AutoSizer>
+            <AutoSizer
+                className={localClasses.autoSizer}
+                disableHeight={!fillParentContainer}
+            >
+                {listRenderer}
+            </AutoSizer>
         </div>
     );
 });
@@ -156,5 +161,9 @@ const useStyles = makeGlobalChonkyStyles(() => ({
     fileListWrapper: {
         height: '100%',
         maxHeight: '100%',
+    },
+    AutoSizer: {
+        height: '100% !important',
+        width: '100% !important',
     },
 }));
