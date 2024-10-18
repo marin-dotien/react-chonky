@@ -162,7 +162,7 @@ const useStyles = makeGlobalChonkyStyles(() => ({
         height: '100%',
         maxHeight: '100%',
     },
-    AutoSizer: {
+    autoSizer: {
         height: '100% !important',
         width: '100% !important',
     },
