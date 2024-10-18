@@ -63,7 +63,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 import { faUpload } from '@fortawesome/free-solid-svg-icons/faUpload';
 import { faUsers } from '@fortawesome/free-solid-svg-icons/faUsers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ChonkyIconName, ChonkyIconProps } from '@aperturerobotics/chonky';
+import { ChonkyIconName, ChonkyIconProps } from '@dotien/chonky';
 import React from 'react';
 import { faPlus, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
 
