@@ -22,6 +22,8 @@ export interface FileListListProps {
     width: number;
     height: number;
     columns: ColumnDefinition[];
+    hideFileIcons?: boolean;
+    hideFolderIcons?: boolean;
 }
 
 export const ListContainer: React.FC<FileListListProps> = React.memo((props) => {

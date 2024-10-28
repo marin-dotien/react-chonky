@@ -1,6 +1,6 @@
 {
   "name": "@dotien/chonky-icon-fontawesome",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "FontAwesome icon component for Chonky file browser",
   "license": "MIT",
   "main": "dist/index.js",

@@ -25,6 +25,8 @@ export interface SmartFileEntryProps {
     displayIndex: number;
     fileViewMode: FileViewMode;
     columns?: ColumnDefinition[];
+    hideFileIcons?: boolean;
+    hideFolderIcons?: boolean;
 }
 
 const disabledDndState: DndEntryState = {
@@ -34,7 +36,14 @@ const disabledDndState: DndEntryState = {
 };
 
 export const SmartFileEntry: React.FC<SmartFileEntryProps> = React.memo(
-    ({ fileId, displayIndex, fileViewMode, columns }) => {
+    ({
+        fileId,
+        displayIndex,
+        fileViewMode,
+        columns,
+        hideFileIcons,
+        hideFolderIcons,
+    }) => {
         const classes = useStyles();
 
         // Basic properties
@@ -68,6 +77,8 @@ export const SmartFileEntry: React.FC<SmartFileEntryProps> = React.memo(
                         {...fileEntryProps}
                         columns={columns!}
                         dndState={disabledDndState}
+                        hideFileIcons={hideFileIcons}
+                        hideFolderIcons={hideFolderIcons}
                     />
                 </ClickableWrapper>
             ) : (
@@ -77,6 +88,8 @@ export const SmartFileEntry: React.FC<SmartFileEntryProps> = React.memo(
                             <ListEntry
                                 {...fileEntryProps}
                                 columns={columns!}
+                                hideFileIcons={hideFileIcons}
+                                hideFolderIcons={hideFolderIcons}
                                 dndState={dndState}
                             />
                         </ClickableWrapper>

@@ -18,8 +18,22 @@ interface StyleState {
     dndState: DndEntryState;
 }
 
-export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] }> =
-    React.memo(({ file, selected, focused, dndState, columns }) => {
+export const ListEntry: React.FC<
+    FileEntryProps & {
+        columns: ColumnDefinition[];
+        hideFileIcons?: boolean;
+        hideFolderIcons?: boolean;
+    }
+> = React.memo(
+    ({
+        file,
+        selected,
+        focused,
+        dndState,
+        columns,
+        hideFileIcons,
+        hideFolderIcons,
+    }) => {
         const entryState: FileEntryState = useFileEntryState(file, selected, focused);
         const dndIconName = useDndIcon(dndState);
 
@@ -56,11 +70,14 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
                     >
                         {column.accessor === 'name' ? (
                             <div className={classes.listFileEntryIcon}>
-                                <ChonkyIcon
-                                    icon={dndIconName ?? entryState.icon}
-                                    spin={dndIconName ? false : entryState.iconSpin}
-                                    fixedWidth={true}
-                                />
+                                {(file?.isDir && !hideFolderIcons) ||
+                                (!file?.isDir && !hideFileIcons) ? (
+                                    <ChonkyIcon
+                                        icon={dndIconName ?? entryState.icon}
+                                        spin={dndIconName ? false : entryState.iconSpin}
+                                        fixedWidth={true}
+                                    />
+                                ) : null}
                             </div>
                         ) : null}
                         {column.render ? (
@@ -82,7 +99,8 @@ export const ListEntry: React.FC<FileEntryProps & { columns: ColumnDefinition[] 
                 ))}
             </div>
         );
-    });
+    }
+);
 
 const useStyles = makeLocalChonkyStyles((theme) => ({
     listFileEntry: {

@@ -25,6 +25,8 @@ import { ColumnDefinition, ListContainer } from './ListContainer';
 export interface FileListProps {
     onScroll?: (e: UIEvent<HTMLDivElement>) => void;
     columns?: ColumnDefinition[];
+    hideFileIcons?: boolean;
+    hideFolderIcons?: boolean;
 }
 
 interface StyleState {
@@ -45,7 +47,7 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
 
     const localClasses = useLocalStyles(styleState);
     const classes = useStyles(viewConfig);
-    const { onScroll, columns } = props;
+    const { onScroll, columns, hideFileIcons, hideFolderIcons } = props;
 
     const defaultColumns: ColumnDefinition[] = [
         { accessor: 'name', label: 'Name', flex: '0 1 20%', justifyContent: 'start' },
@@ -73,6 +75,8 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
                         width={width}
                         height={height}
                         columns={columns || defaultColumns}
+                        hideFileIcons={hideFileIcons}
+                        hideFolderIcons={hideFolderIcons}
                     />
                 );
             } else {
