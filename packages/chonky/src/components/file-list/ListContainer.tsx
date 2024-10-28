@@ -27,7 +27,7 @@ export interface FileListListProps {
 }
 
 export const ListContainer: React.FC<FileListListProps> = React.memo((props) => {
-    const { width, height, columns } = props;
+    const { width, height, columns, hideFileIcons, hideFolderIcons } = props;
 
     const viewConfig = useSelector(selectFileViewConfig);
 
@@ -51,6 +51,8 @@ export const ListContainer: React.FC<FileListListProps> = React.memo((props) => 
                         displayIndex={data.index}
                         fileViewMode={FileViewMode.List}
                         columns={columns}
+                        hideFileIcons={hideFileIcons}
+                        hideFolderIcons={hideFolderIcons}
                     />
                 </div>
             );
