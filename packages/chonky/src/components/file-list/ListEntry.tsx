@@ -68,16 +68,15 @@ export const ListEntry: React.FC<
                                     : 'hidden',
                         }}
                     >
-                        {column.accessor === 'name' ? (
+                        {column.accessor === 'name' &&
+                        ((file?.isDir && !hideFolderIcons) ||
+                            (!file?.isDir && !hideFileIcons)) ? (
                             <div className={classes.listFileEntryIcon}>
-                                {(file?.isDir && !hideFolderIcons) ||
-                                (!file?.isDir && !hideFileIcons) ? (
-                                    <ChonkyIcon
-                                        icon={dndIconName ?? entryState.icon}
-                                        spin={dndIconName ? false : entryState.iconSpin}
-                                        fixedWidth={true}
-                                    />
-                                ) : null}
+                                <ChonkyIcon
+                                    icon={dndIconName ?? entryState.icon}
+                                    spin={dndIconName ? false : entryState.iconSpin}
+                                    fixedWidth={true}
+                                />
                             </div>
                         ) : null}
                         {column.render ? (
