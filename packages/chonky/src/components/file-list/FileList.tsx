@@ -83,7 +83,7 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
                 return <GridContainer width={width} height={height} />;
             }
         },
-        [columns, displayFileIds, viewConfig]
+        [columns, displayFileIds, viewConfig, hideFileIcons, hideFolderIcons]
     );
 
     const ChonkyIcon = useContext(ChonkyIconContext);
