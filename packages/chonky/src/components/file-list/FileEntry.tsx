@@ -125,5 +125,6 @@ const useStyles = makeGlobalChonkyStyles(() => ({
         outline: 'none !important',
         position: 'relative',
         height: '100%',
+        width: '100%',
     },
 }));
